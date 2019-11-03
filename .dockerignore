@@ -4,6 +4,7 @@ coverage/
 public/system/
 db/*.sqlite3
 db/*.sqlite3-journal
+.DS_Store
 .env
 .env.sample
 .git

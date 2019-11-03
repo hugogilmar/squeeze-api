@@ -1,0 +1,12 @@
+/log/*
+/storage/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+!/storage/.keep
+/docker/db/*
+/config/master.key
+/.bundle
+/.idea
+/.byebug_history
+/.env

@@ -1,0 +1,28 @@
+require:
+  - rubocop-rails
+  - rubocop-rake
+  - rubocop-performance
+  - rubocop-minitest
+
+AllCops:
+  EnabledByDefault: true
+  TargetRubyVersion: 2.6.5
+  Exclude:
+    - 'app/views/**/*'
+    - 'db/**/*'
+    - 'bin/**/*'
+
+Bundler/GemComment:
+  Enabled: false
+
+Lint/NumberConversion:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Style/Copyright:
+  Enabled: false
+
+Style/MissingElse:
+  Enabled: false

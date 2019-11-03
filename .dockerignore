@@ -1,0 +1,13 @@
+log/
+tmp/
+coverage/
+public/system/
+db/*.sqlite3
+db/*.sqlite3-journal
+.env
+.env.sample
+.git
+.gitignore
+.ruby-version
+docker-compose.yml
+README.md

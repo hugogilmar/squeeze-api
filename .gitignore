@@ -1,6 +1,8 @@
+/coverage/*
 /log/*
 /storage/*
 /tmp/*
+!/coverage/.keep
 !/log/.keep
 !/tmp/.keep
 !/storage/.keep

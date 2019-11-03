@@ -23,6 +23,7 @@ group :development do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rake', require: false
+  gem 'simplecov', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end

@@ -13,8 +13,8 @@ services:
       - db
       - cache
       - web
-    entrypoint: /opt/project/app/docker/entrypoint.sh
-    command: /opt/project/app/docker/command.sh
+    entrypoint: /opt/project/docker/entrypoint.sh
+    command: /opt/project/docker/command.sh
     networks:
       squeeze-dev:
         aliases:

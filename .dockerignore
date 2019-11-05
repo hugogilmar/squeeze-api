@@ -1,3 +1,6 @@
+docker/
+!docker/command.sh
+!docker/entrypoint.sh
 log/
 tmp/
 coverage/
@@ -5,10 +8,12 @@ public/system/
 db/*.sqlite3
 db/*.sqlite3-journal
 .DS_Store
+.codeclimate.yml
 .env
 .env.sample
 .git
 .gitignore
 .ruby-version
+.travis.yml
 docker-compose.yml
 README.md

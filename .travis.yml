@@ -21,15 +21,15 @@ before_install:
 before_script:
   - cp -f .env.sample .env
   - echo RAILS_MASTER_KEY=${DOCKER_COMPOSE_VERSION} > .env
-  - docker-compose build
-  - docker-compose run app bundle install
-  - docker-compose run app bundle exec rails db:test:prepare
+  - docker-compose up -d --build
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 
 script:
-  - docker-compose run app bundle exec rails test
+  - docker-compose run --rm app bundle exec rails db:create
+  - docker-compose run --rm app bundle exec rails test
 
 after_script:
+  - docker-compose down -v
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

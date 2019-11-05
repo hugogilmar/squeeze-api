@@ -13,11 +13,11 @@ git:
   submodules: false
 
 before_install:
-  - sudo rm /usr/local/bin/docker-compose
+  - sudo rm -f /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > ./docker-compose
   - chmod +x ./docker-compose
   - sudo mv docker-compose /usr/local/bin
-  - sudo rm /usr/local/cc-test-reporter
+  - sudo rm -f /usr/local/cc-test-reporter
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - sudo mv cc-test-reporter /usr/local/bin

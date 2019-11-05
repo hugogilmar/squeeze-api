@@ -14,7 +14,8 @@ git:
 
 before_script:
   - docker-compose build
-  - docker-compose run notes bundle exec rails db:test:prepare
+  - docker-compose run app bundle install
+  - docker-compose run app bundle exec rails db:test:prepare
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build

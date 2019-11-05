@@ -12,7 +12,15 @@ git:
   quiet: true
   submodules: false
 
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+
 before_script:
+  - cp -f .env.sample .env
+  - echo RAILS_MASTER_KEY=${DOCKER_COMPOSE_VERSION} > .env
   - docker-compose build
   - docker-compose run app bundle install
   - docker-compose run app bundle exec rails db:test:prepare

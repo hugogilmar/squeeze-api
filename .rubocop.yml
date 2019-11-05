@@ -1,12 +1,6 @@
-require:
-  - rubocop-rails
-  - rubocop-rake
-  - rubocop-performance
-  - rubocop-minitest
-
 AllCops:
   EnabledByDefault: true
-  TargetRubyVersion: 2.6.5
+  TargetRubyVersion: 2.5
   Exclude:
     - 'app/views/**/*'
     - 'db/**/*'

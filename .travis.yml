@@ -1,0 +1,43 @@
+language: minimal
+
+services:
+  - docker
+
+branches:
+  only:
+    - develop
+    - master
+
+git:
+  quiet: true
+  submodules: false
+
+before_install:
+  - sudo rm -f /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > ./docker-compose
+  - chmod +x ./docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  - sudo rm -f /usr/local/cc-test-reporter
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - sudo mv cc-test-reporter /usr/local/bin
+  - cc-test-reporter before-build
+
+before_script:
+  - echo LANG=en_US.UTF-8 > .env
+  - echo LANGUAGE=en_US:en >> .env
+  - echo LC_ALL=en_US.UTF-8 >> .env
+  - echo POSTGRES_USER=squeeze >> .env
+  - echo POSTGRES_DB=squeeze_test >> .env
+  - echo RAILS_ENV=test >> .env
+  - echo RAILS_MASTER_KEY=${RAILS_MASTER_KEY} >> .env
+  - docker-compose build
+
+script:
+  - docker-compose run --rm app bundle exec rails db:test:prepare
+  - docker-compose run --rm app bundle exec rails test
+
+after_script:
+  - docker-compose down -v
+  - sed -i 's|/opt/project/app/||g' coverage/.resultset.json
+  - cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

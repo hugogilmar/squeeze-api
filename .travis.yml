@@ -41,3 +41,7 @@ after_script:
   - docker-compose down -v
   - sed -i 's|/opt/project/app/||g' coverage/.resultset.json
   - cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
+deploy:
+  provider: heroku
+  app: floating-brook-34623

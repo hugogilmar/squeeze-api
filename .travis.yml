@@ -31,6 +31,8 @@ before_script:
   - echo POSTGRES_DB=squeeze_test >> .env
   - echo RAILS_ENV=test >> .env
   - echo RAILS_MASTER_KEY=${RAILS_MASTER_KEY} >> .env
+  - echo DATABASE_URL=${DATABASE_URL} >> .env
+  - echo REDIS_URL=${REDIS_URL} >> .env
   - docker-compose build
 
 script:

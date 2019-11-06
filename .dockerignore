@@ -16,4 +16,5 @@ db/*.sqlite3-journal
 .ruby-version
 .travis.yml
 docker-compose.yml
+Procfile
 README.md

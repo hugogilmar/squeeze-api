@@ -15,7 +15,11 @@ module Rack
         }
       }
 
-      [200, { 'Content-Type' => 'application/json' }, [status.to_json]]
+      # rubocop:disable Style/StringHashKeys
+      headers = { 'Content-Type' => 'application/json' }
+      # rubocop:enable Style/StringHashKeys
+
+      [200, headers, [status.to_json]]
     end
 
     protected

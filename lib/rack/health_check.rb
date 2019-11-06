@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Rack
   # Health check endpoint
-  class  HealthCheck
+  class HealthCheck
     # Build endpoint response data
-    def call(env)
+    def call(_env)
       status = {
         redis: {
           connected: redis_connected
@@ -21,7 +23,7 @@ module Rack
     def redis_connected
       redis = Redis.new(url: ENV['REDIS_URL'])
       redis.ping == 'PONG'
-    rescue => _e
+    rescue Redis::BaseConnectionError
       false
     end
 
@@ -29,7 +31,7 @@ module Rack
       ApplicationRecord.establish_connection
       ApplicationRecord.connection
       ApplicationRecord.connected?
-    rescue => _e
+    rescue PG::Error
       false
     end
 

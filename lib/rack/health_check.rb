@@ -5,7 +5,21 @@ module Rack
   class HealthCheck
     # Build endpoint response data
     def call(_env)
-      status = {
+      [200, headers, [body.to_json]]
+    end
+
+    protected
+
+    def headers
+      # rubocop:disable Style/StringHashKeys
+      {
+        'Content-Type' => 'application/json'
+      }
+      # rubocop:enable Style/StringHashKeys
+    end
+
+    def body
+      {
         redis: {
           connected: redis_connected
         },
@@ -14,15 +28,7 @@ module Rack
           migrations_updated: postgres_migrations_updated
         }
       }
-
-      # rubocop:disable Style/StringHashKeys
-      headers = { 'Content-Type' => 'application/json' }
-      # rubocop:enable Style/StringHashKeys
-
-      [200, headers, [status.to_json]]
     end
-
-    protected
 
     def redis_connected
       redis = Redis.new(url: ENV['REDIS_URL'])

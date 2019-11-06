@@ -17,7 +17,7 @@ Rails.application.configure do
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join('tmp', 'caching-dev.txt').exist?
-    config.cache_store = :memory_store
+    config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }
     config.public_file_server.headers = {
       "Cache-Control": "public, max-age=#{2.days.to_i}"
     }
@@ -28,7 +28,7 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  # config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false

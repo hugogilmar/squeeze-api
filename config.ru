@@ -5,7 +5,7 @@
 require_relative('config/environment')
 require_relative('lib/rack/health_check')
 
-map '/health' do
+map '/health_check' do
   run Rack::HealthCheck.new
 end
 

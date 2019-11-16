@@ -5,18 +5,15 @@ AllCops:
     - 'app/views/**/*'
     - 'db/**/*'
     - 'bin/**/*'
-
 Bundler/GemComment:
   Enabled: false
-
 Lint/NumberConversion:
   Enabled: false
-
+Metrics/BlockLength:
+  Max: 40
 Metrics/LineLength:
   Max: 120
-
 Style/Copyright:
   Enabled: false
-
 Style/MissingElse:
   Enabled: false

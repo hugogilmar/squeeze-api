@@ -12,7 +12,7 @@ class HealthCheckTest < Minitest::Test
   end
 
   def test_health_check
-    get('/health')
+    get('/health_check')
     assert(last_response.ok?)
   end
 end

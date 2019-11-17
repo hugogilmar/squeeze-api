@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require('factory_bot_rails')
 require('simplecov')
 
 SimpleCov.start('rails') do
@@ -14,6 +15,8 @@ require('rails/test_help')
 
 module ActiveSupport
   class TestCase
+    include FactoryBot::Syntax::Methods
+
     # Run tests in parallel with specified workers
     parallelize(workers: :number_of_processors)
 

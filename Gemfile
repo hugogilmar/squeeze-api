@@ -15,9 +15,11 @@ gem('bcrypt', '~> 3.1.13')
 gem('jsonapi-resources', '~> 0.10.1')
 gem('rollout', '~> 2.4.5')
 gem('sidekiq', '~> 6.0.3')
+gem('simple_command', '~> 0.1.0')
 gem('uuid', '~> 2.3.9')
 
 gem('bootsnap', '>= 1.4.2', require: false)
+gem('tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby])
 
 group :development, :test do
   gem('byebug', platforms: %i[mri mingw x64_mingw])
@@ -32,5 +34,3 @@ group :development do
   gem('spring', '~> 2.1.0')
   gem('spring-watcher-listen', '~> 2.0.0')
 end
-
-gem('tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby])

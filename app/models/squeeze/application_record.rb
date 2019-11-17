@@ -13,6 +13,7 @@ module Squeeze
     end
 
     class << self
+      # Set table prefix for inherited models
       def table_name_prefix
         'squeeze_'
       end

@@ -3,7 +3,8 @@
 module Squeeze
   module V1
     # Controller base class
-    class ApplicationController < JSONAPI::ResourceController
+    class ApplicationController < ActionController::API
+      include JSONAPI::ActsAsResourceController
       skip_forgery_protection
     end
   end

@@ -28,16 +28,14 @@ before_script:
   - echo LANGUAGE=en_US:en >> .env
   - echo LC_ALL=en_US.UTF-8 >> .env
   - echo POSTGRES_USER=squeeze >> .env
-  - echo POSTGRES_DB=squeeze_develop >> .env
+  - echo POSTGRES_DB=squeeze_test >> .env
   - echo RAILS_ENV=test >> .env
   - echo RAILS_MASTER_KEY=${RAILS_MASTER_KEY} >> .env
   - echo DATABASE_URL=${DATABASE_URL} >> .env
-  - echo TEST_DATABASE_URL=${TEST_DATABASE_URL} >> .env
   - echo REDIS_URL=${REDIS_URL} >> .env
   - docker-compose build
 
 script:
-  - docker-compose run --rm app bundle exec rails db:create
   - docker-compose run --rm app bundle exec rails db:test:prepare
   - docker-compose run --rm app bundle exec rails test
 

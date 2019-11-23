@@ -4,7 +4,6 @@ require('test_helper')
 require('rack/test')
 require_relative('../../lib/rack/health_check')
 
-# health_check_controller_test.rb
 class HealthCheckTest < Minitest::Test
   include Rack::Test::Methods
 

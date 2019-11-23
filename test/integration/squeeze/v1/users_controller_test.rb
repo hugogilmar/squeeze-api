@@ -23,7 +23,7 @@ module Squeeze
         assert_response :success
       end
 
-      test 'should not create user' do
+      test 'should not create user by required params missing' do
         password = Faker::Internet.password
         data = {
           data: {
@@ -35,6 +35,18 @@ module Squeeze
 
         post v1_users_url, params: data.to_json, headers: { 'Content-type': 'application/json' }
         assert_response :unprocessable_entity
+      end
+
+      test 'should not create user by required request format' do
+        password = Faker::Internet.password
+        data = {
+          email: Faker::Internet.email,
+          password: password,
+          password_confirmation: password
+        }
+
+        post v1_users_url, params: data.to_json, headers: { 'Content-type': 'application/json' }
+        assert_response :bad_request
       end
     end
   end

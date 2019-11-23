@@ -18,6 +18,8 @@ require('factory_bot')
 require('faker')
 require('rails/test_help')
 
+FactoryBot.find_definitions
+
 module ActiveSupport
   class TestCase
     include FactoryBot::Syntax::Methods

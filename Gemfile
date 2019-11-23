@@ -9,7 +9,8 @@ gem('rails', '~> 6.0.0')
 
 gem('pg', '>= 0.18', '< 2.0')
 gem('puma', '~> 3.12.1')
-gem('redis', '~> 4.1.3')
+gem('hiredis', '~> 0.6.3')
+gem('redis', '~> 4.1.3', require: ['redis', 'redis/connection/hiredis'])
 
 gem('active_model_serializers', '~> 0.10.10')
 gem('bcrypt', '~> 3.1.13')

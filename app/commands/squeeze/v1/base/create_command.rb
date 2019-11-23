@@ -11,11 +11,8 @@ module Squeeze
           form = form_class.new(model)
 
           if form.validate(params)
-            if form.save
-              success(serializer_class.new(form.model))
-            else
-              failure(form.model)
-            end
+            form.save
+            success(serializer_class.new(form.model))
           else
             failure(form)
           end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require('singleton')
 require('forwardable')
+require('singleton')
 
 module Squeeze
   # Feature flipper singleton

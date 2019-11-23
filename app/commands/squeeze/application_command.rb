@@ -2,7 +2,6 @@
 
 module Squeeze
   # Command base class
-  class ApplicationCommand
-    prepend SimpleCommand
+  class ApplicationCommand < Pathway::Operation
   end
 end

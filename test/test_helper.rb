@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-require('factory_bot_rails')
+require('factory_bot')
+require('faker')
 require('simplecov')
 
 SimpleCov.start('rails') do
@@ -8,7 +9,7 @@ SimpleCov.start('rails') do
   add_filter '/db/'
   add_filter '/test/'
   add_group 'Commands', 'app/commands'
-  add_group 'Resources', 'app/resources'
+  add_group 'Serializers', 'app/serializers'
 end
 
 ENV['RAILS_ENV'] ||= 'test'

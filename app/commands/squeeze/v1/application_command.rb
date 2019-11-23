@@ -2,8 +2,8 @@
 
 module Squeeze
   module V1
-    # Resource base class
-    class ApplicationResource < JSONAPI::Resource
+    # Command base class
+    class ApplicationCommand < Pathway::Operation
     end
   end
 end

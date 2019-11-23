@@ -10,9 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_11_23_151422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "squeeze_profiles", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "uuid", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_squeeze_profiles_on_user_id"
+    t.index ["uuid"], name: "index_squeeze_profiles_on_uuid", unique: true
+  end
+
+  create_table "squeeze_users", force: :cascade do |t|
+    t.string "uuid", null: false
+    t.string "email", null: false
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_squeeze_users_on_email", unique: true
+    t.index ["uuid"], name: "index_squeeze_users_on_uuid", unique: true
+  end
+
+  add_foreign_key "squeeze_profiles", "squeeze_users", column: "user_id"
 end

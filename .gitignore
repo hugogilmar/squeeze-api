@@ -1,4 +1,5 @@
 /coverage/*
+/docker/db/*
 /log/*
 /storage/*
 /tmp/*
@@ -6,8 +7,8 @@
 !/log/.keep
 !/tmp/.keep
 !/storage/.keep
-/docker/db/*
 /config/master.key
+/config/database.yml
 /.bundle
 /.idea
 /.byebug_history

@@ -6,16 +6,23 @@ SimpleCov.start('rails') do
   add_filter '/bin/'
   add_filter '/db/'
   add_filter '/test/'
+  add_group 'Commands', 'app/commands'
+  add_group 'Forms', 'app/forms'
+  add_group 'Serializers', 'app/serializers'
 end
 
 ENV['RAILS_ENV'] ||= 'test'
 require_relative('../config/environment')
+
+require('factory_bot')
+require('faker')
 require('rails/test_help')
+
+FactoryBot.find_definitions
 
 module ActiveSupport
   class TestCase
-    # Run tests in parallel with specified workers
-    parallelize(workers: :number_of_processors)
+    include FactoryBot::Syntax::Methods
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all

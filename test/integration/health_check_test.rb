@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require('test_helper')
 require('rack/test')
 require_relative('../../lib/rack/health_check')
 

@@ -3,6 +3,7 @@
 module Squeeze
   module V1
     module Profiles
+      # Profiles create form
       class CreateForm < Reform::Form
         property :first_name
         property :last_name

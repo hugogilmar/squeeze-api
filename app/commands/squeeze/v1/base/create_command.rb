@@ -5,6 +5,7 @@ module Squeeze
     module Base
       # Create command base class
       class CreateCommand < ApplicationCommand
+        # Command execution
         def call(params)
           model = model_class.new
           form = form_class.new(model)
@@ -22,14 +23,17 @@ module Squeeze
 
         private
 
+        # Model class used for database persistance
         def model_class
           raise(NotImplementedError, 'model_class method not implemented')
         end
 
+        # Form class used for params validation
         def form_class
           raise(NotImplementedError, 'form_class method not implemented')
         end
 
+        # Serializer class used for json serialization
         def serializer_class
           raise(NotImplementedError, 'serializer_class method not implemented')
         end

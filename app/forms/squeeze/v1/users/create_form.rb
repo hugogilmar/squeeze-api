@@ -5,6 +5,7 @@ require('reform/form/validation/unique_validator')
 module Squeeze
   module V1
     module Users
+      # Users create form
       class CreateForm < Reform::Form
         property :email
         property :password

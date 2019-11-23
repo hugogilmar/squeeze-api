@@ -26,6 +26,8 @@ module Squeeze
     end
 
     def test_for_deactivate_user
+      Feature.deactivate(:foo)
+      assert_equal(false, Feature.active?(:foo))
       Feature.activate_for_user(:foo, @user.email)
       assert_equal(true, Feature.active_for_user?(:foo, @user.email))
       Feature.deactivate_for_user(:foo, @user.email)

@@ -4,6 +4,9 @@ module Squeeze
   # Users model
   class User < ApplicationRecord
     has_secure_password
-    validates :email, presence: true, uniqueness: true
+
+    has_one :profile
+
+    accepts_nested_attributes_for :profile
   end
 end

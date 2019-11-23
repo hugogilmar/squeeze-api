@@ -23,15 +23,15 @@ module Squeeze
         private
 
         def model_class
-          raise NotImplementedError, 'model_class method not implemented'
+          raise(NotImplementedError, 'model_class method not implemented')
         end
 
         def form_class
-          raise NotImplementedError, 'form_class method not implemented'
+          raise(NotImplementedError, 'form_class method not implemented')
         end
 
         def serializer_class
-          raise NotImplementedError, 'serializer_class method not implemented'
+          raise(NotImplementedError, 'serializer_class method not implemented')
         end
       end
     end

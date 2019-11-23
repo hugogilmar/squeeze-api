@@ -8,9 +8,9 @@ module Squeeze
         command = Users::CreateCommand.new.call(user_params)
 
         if command.success?
-          render json: command.value, status: :created
+          render(json: command.value, status: :created)
         else
-          raise ActiveRecord::RecordInvalid.new(command.error)
+          raise(ActiveRecord::RecordInvalid, command.error)
         end
       end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require('reform/form/validation/unique_validator')
 
 module Squeeze
@@ -7,9 +9,11 @@ module Squeeze
         property :email
         property :password
         property :password_confirmation, virtual: true
-        property :profile, form: Profiles::CreateForm, populator: -> (model:, **) do
-          model || self.profile = Profile.new
-        end
+        property :profile,
+                 form: Profiles::CreateForm,
+                 populator: lambda { |model:, **|
+                              model || self.profile = Profile.new
+                            }
 
         validates :email, presence: true, unique: true
         validates :password, presence: true, confirmation: true

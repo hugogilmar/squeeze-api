@@ -13,19 +13,19 @@ module Squeeze
 
       def test_model_class
         assert_raises NotImplementedError do
-          @command.send(:model_class)
+          @command.__send__(:model_class)
         end
       end
 
       def test_form_class
         assert_raises NotImplementedError do
-          @command.send(:form_class)
+          @command.__send__(:form_class)
         end
       end
 
       def test_serializer_class
         assert_raises NotImplementedError do
-          @command.send(:serializer_class)
+          @command.__send__(:serializer_class)
         end
       end
     end

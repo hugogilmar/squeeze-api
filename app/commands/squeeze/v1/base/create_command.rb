@@ -18,14 +18,17 @@ module Squeeze
 
         private
 
+        # Model builder
         def model
           @model ||= model_class.new
         end
 
+        # Form builder
         def form
           @form ||= form_class.new(model)
         end
 
+        # Serializer builder
         def serializer
           @serializer ||= serializer_class.new(form.model)
         end

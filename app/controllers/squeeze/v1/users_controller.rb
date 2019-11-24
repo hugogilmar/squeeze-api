@@ -15,6 +15,7 @@ module Squeeze
         render(json: command.value, status: :created)
       end
 
+      # Users profile update endpoint
       def update
         command = Users::UpdateCommand.new(current_user: current_user).call(update_user_params)
 
@@ -25,11 +26,12 @@ module Squeeze
 
       private
 
-      # Users allowed params
+      # Users create allowed params
       def create_user_params
         params.require(:data).permit(:email, :password, :password_confirmation, profile: %i[first_name last_name])
       end
 
+      # Users update allowed params
       def update_user_params
         params.require(:data).permit(profile: %i[first_name last_name])
       end

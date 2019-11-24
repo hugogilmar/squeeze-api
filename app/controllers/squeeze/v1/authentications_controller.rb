@@ -17,7 +17,7 @@ module Squeeze
 
       private
 
-      # Authentications allowed params
+      # Authentication allowed params
       def authentication_params
         params.require(:data).permit(:email, :password)
       end

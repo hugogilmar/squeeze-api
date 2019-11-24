@@ -15,11 +15,23 @@ module Squeeze
         render(json: command.value, status: :created)
       end
 
+      def update
+        command = Users::UpdateCommand.new(current_user: current_user).call(update_user_params)
+
+        raise(ActiveRecord::RecordInvalid, command.error) unless command.success?
+
+        render(json: command.value, status: :created)
+      end
+
       private
 
       # Users allowed params
       def create_user_params
         params.require(:data).permit(:email, :password, :password_confirmation, profile: %i[first_name last_name])
+      end
+
+      def update_user_params
+        params.require(:data).permit(profile: %i[first_name last_name])
       end
     end
   end

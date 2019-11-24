@@ -7,18 +7,27 @@ module Squeeze
       class CreateCommand < ApplicationCommand
         # Command execution
         def call(params)
-          model = model_class.new
-          form = form_class.new(model)
-
           if form.validate(params)
             return failure(form.model) unless form.save
-            success(serializer_class.new(form.model))
+            success(serializer)
           else
             failure(form)
           end
         end
 
         private
+
+        def model
+          @model ||= model_class.new
+        end
+
+        def form
+          @form ||= form_class.new(model)
+        end
+
+        def serializer
+          @serializer ||= serializer_class.new(form.model)
+        end
 
         # Model class used for database persistance
         def model_class

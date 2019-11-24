@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Rack
-  # Health check endpoint
+  # Health check app
   class HealthCheck
     # Build endpoint response data
     def call(_env)

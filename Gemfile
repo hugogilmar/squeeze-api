@@ -14,11 +14,13 @@ gem('redis', '~> 4.1.3', require: ['redis', 'redis/connection/hiredis'])
 
 gem('active_model_serializers', '~> 0.10.10')
 gem('bcrypt', '~> 3.1.13')
+gem('jwt', '~> 2.2.1')
 gem('pathway', '~> 0.10.0')
 gem('reform-rails', '~> 0.1.7')
 gem('rollout', '~> 2.4.5')
 gem('sidekiq', '~> 6.0.3')
 gem('uuid', '~> 2.3.9')
+gem('warden', '~> 1.2.8')
 
 gem('bootsnap', '~> 1.4.2', require: false)
 gem('tzinfo-data', '~> 1.2.5', platforms: %i[mingw mswin x64_mingw jruby])

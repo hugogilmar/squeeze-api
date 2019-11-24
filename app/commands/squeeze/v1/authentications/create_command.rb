@@ -21,12 +21,12 @@ module Squeeze
 
         # Token expiration timestamp
         def expires_at
-          @expires_at ||= (Time.now + 24.hours)
+          @expires_at ||= (Time.zone.now + 24.hours)
         end
 
         # Token issued timestamp
         def issued_at
-          @issued_at ||= Time.now
+          @issued_at ||= Time.zone.now
         end
 
         # Token payload

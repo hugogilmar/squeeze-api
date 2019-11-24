@@ -24,7 +24,7 @@ module Warden
 
         # Valid token check
         def valid_token?
-          token && Time.at(token[:exp]) > Time.now
+          token && Time.zone.at(token[:exp]) > Time.zone.now
         end
 
         # Authentication token from environment variables

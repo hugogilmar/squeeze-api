@@ -44,8 +44,8 @@ module Squeeze
     config.api_only = true
 
     # Warden middleware configuration
-    config.middleware.use Warden::Manager do |manager|
-      manager.default_strategies :passworkd, :token
+    config.middleware.use(Warden::Manager) do |manager|
+      manager.default_strategies(:passworkd, :token)
       manager.failure_app = Rack::Unauthorized.new
     end
   end

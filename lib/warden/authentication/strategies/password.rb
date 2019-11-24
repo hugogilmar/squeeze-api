@@ -15,6 +15,7 @@ module Warden
 
         def authenticate!
           return success!(_user) if _user && valid_password?
+
           fail!('Could not authenticate')
         end
 

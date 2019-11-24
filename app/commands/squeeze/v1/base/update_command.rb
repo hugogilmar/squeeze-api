@@ -11,6 +11,7 @@ module Squeeze
         def call(params)
           if form.validate(params)
             return failure(form.model) unless form.save
+
             success(serializer)
           else
             failure(form)

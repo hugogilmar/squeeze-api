@@ -4,6 +4,10 @@ module Squeeze
   module V1
     # Controller base class
     class ApplicationController < ActionController::API
+      include Warden::Authentication::HelperMethods
+
+      before_action :authenticate_user!
+
       rescue_from ActionController::ParameterMissing do |e|
         render json: { error: e.message.capitalize }, status: 400
       end

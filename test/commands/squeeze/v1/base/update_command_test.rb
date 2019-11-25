@@ -2,19 +2,19 @@
 
 require('test_helper')
 
-class DummyCreateCommand < Squeeze::V1::Base::CreateCommand; end
+class DummyUpdateCommand < Squeeze::V1::Base::UpdateCommand; end
 
 module Squeeze
   module V1
     module Base
-      class CreateCommandTest < Minitest::Test
+      class UpdateCommandTest < Minitest::Test
         def setup
-          @command = DummyCreateCommand.new
+          @command = DummyUpdateCommand.new
         end
 
-        def test_model_class
+        def test_model
           assert_raises NotImplementedError do
-            @command.__send__(:model_class)
+            @command.__send__(:model)
           end
         end
 

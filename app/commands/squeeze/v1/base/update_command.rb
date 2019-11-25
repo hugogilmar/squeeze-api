@@ -3,8 +3,10 @@
 module Squeeze
   module V1
     module Base
-      # Create command base class
-      class CreateCommand < ApplicationCommand
+      # Update command base class
+      class UpdateCommand < ApplicationCommand
+        context current_user: nil
+
         # Command execution
         def call(params)
           if form.validate(params)
@@ -20,7 +22,7 @@ module Squeeze
 
         # Model builder
         def model
-          @model ||= model_class.new
+          raise(NotImplementedError, 'model method not implemented')
         end
 
         # Form builder
@@ -31,11 +33,6 @@ module Squeeze
         # Serializer builder
         def serializer
           @serializer ||= serializer_class.new(form.model)
-        end
-
-        # Model class used for database persistance
-        def model_class
-          raise(NotImplementedError, 'model_class method not implemented')
         end
 
         # Form class used for params validation

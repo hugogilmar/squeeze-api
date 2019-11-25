@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 require_relative('boot')
+require_relative('../lib/rack/unauthorized')
+require_relative('../lib/warden/authentication/strategies/password')
+require_relative('../lib/warden/authentication/strategies/token')
 
 require('rails')
 # Pick the frameworks you want:
@@ -39,5 +42,11 @@ module Squeeze
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # Warden middleware configuration
+    config.middleware.use(Warden::Manager) do |manager|
+      manager.default_strategies(:passworkd, :token)
+      manager.failure_app = Rack::Unauthorized.new
+    end
   end
 end

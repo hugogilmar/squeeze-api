@@ -3,18 +3,18 @@
 module Squeeze
   module V1
     module Users
-      # Create users command
-      class CreateCommand < Base::CreateCommand
+      # Update users command
+      class UpdateCommand < Base::UpdateCommand
         private
 
-        # Model class used for database persistance
-        def model_class
-          User
+        # Model builder
+        def model
+          @model ||= current_user
         end
 
         # Form class used for params validation
         def form_class
-          CreateForm
+          UpdateForm
         end
 
         # Serializer class used for json serialization

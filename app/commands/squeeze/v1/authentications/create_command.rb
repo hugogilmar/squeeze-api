@@ -14,7 +14,7 @@ module Squeeze
           warden.authenticate(:password)
           return failure(:unauthorized) unless warden.authenticated?
 
-          success(authentication_token: authentication_token, expires_at: expires_at)
+          success(data: { authentication_token: authentication_token, expires_at: expires_at })
         end
 
         private

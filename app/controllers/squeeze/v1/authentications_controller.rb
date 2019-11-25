@@ -14,13 +14,6 @@ module Squeeze
 
         render(json: command.value, status: :created)
       end
-
-      private
-
-      # Authentication allowed params
-      def authentication_params
-        params.require(:data).permit(:email, :password)
-      end
     end
   end
 end

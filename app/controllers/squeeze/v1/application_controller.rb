@@ -27,8 +27,6 @@ module Squeeze
       # rescue_from ActiveRecord::RecordNotFound do |e|
       #   render json: { error: e.message.capitalize }, status: 404
       # end
-
-      skip_forgery_protection
     end
   end
 end

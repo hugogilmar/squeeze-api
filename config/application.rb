@@ -48,5 +48,16 @@ module Squeeze
       manager.default_strategies(:passworkd, :token)
       manager.failure_app = Rack::Unauthorized.new
     end
+
+    # ActionMailer SMTP settings
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address: ENV['SMTP_ADDRESS'],
+      authentication: ENV['SMTP_AUTHENTICATION'],
+      domain: ENV['SMTP_DOMAIN'],
+      password: ENV['SMTP_PASSWORD'],
+      port: ENV['SMTP_PORT'],
+      user_name: ENV['SMTP_USER_NAME']
+    }
   end
 end

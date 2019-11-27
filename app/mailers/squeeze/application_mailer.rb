@@ -3,7 +3,7 @@
 module Squeeze
   # Mailer base class
   class ApplicationMailer < ActionMailer::Base
-    default from: 'from@example.com'
+    default from: ENV['MAILER_FROM']
     layout 'mailer'
   end
 end

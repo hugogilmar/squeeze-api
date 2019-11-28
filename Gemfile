@@ -30,6 +30,7 @@ group :development, :test do
   gem('factory_bot_rails', '~> 5.1.1', require: false)
   gem('faker', '~> 2.7.0', require: false)
   gem('rubocop', '~> 0.76.0', require: false)
+  gem('brakeman', '~> 4.7.1', require: false)
   gem('simplecov', '~> 0.17.1', require: false)
 end
 

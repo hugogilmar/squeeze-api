@@ -26,6 +26,7 @@ gem('bootsnap', '~> 1.4.2', require: false)
 gem('tzinfo-data', '~> 1.2.5', platforms: %i[mingw mswin x64_mingw jruby])
 
 group :development, :test do
+  gem('brakeman', '~> 4.7.1', require: false)
   gem('byebug', '~> 11.0.1', platforms: %i[mri mingw x64_mingw])
   gem('factory_bot_rails', '~> 5.1.1', require: false)
   gem('faker', '~> 2.7.0', require: false)

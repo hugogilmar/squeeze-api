@@ -59,5 +59,12 @@ module Squeeze
       port: ENV['SMTP_PORT'],
       user_name: ENV['SMTP_USER_NAME']
     }
+
+    # Rails generators settings
+    config.generators do |g|
+      g.orm :active_record
+      g.template_engine :erb
+      g.test_framework  :test_unit, fixture: false
+    end
   end
 end

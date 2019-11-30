@@ -9,8 +9,8 @@ module Squeeze
         attr_reader :params
 
         # Command execution
-        def call(params = {})
-          @params = params
+        def call(params)
+          @params = params || {}
 
           return failure(:bad_request) if models.nil?
 
@@ -49,7 +49,11 @@ module Squeeze
 
         # Serializer builder
         def serializer
-          @serializer ||= ActiveModelSerializers::SerializableResource.new(models, meta: metadata, each_serializer: serializer_class)
+          @serializer ||= ActiveModelSerializers::SerializableResource.new(
+            models,
+            meta: metadata,
+            each_serializer: serializer_class
+          )
         end
 
         # Serializer class used for json serialization

@@ -15,7 +15,7 @@ module Squeeze
 
     # Attributes hash to be serialized
     def attributes
-      { 'authentication_token' => nil, 'expires_at' => nil }
+      { authentication_token: nil, expires_at: nil }
     end
   end
 end

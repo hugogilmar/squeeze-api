@@ -46,7 +46,7 @@ module Squeeze
 
         raise(ActiveRecord::RecordInvalid, result.error) unless result.success?
 
-        render nothing: true, status: :no_content
+        render(nothing: true, status: :no_content)
       end
 
       private

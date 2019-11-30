@@ -35,7 +35,9 @@ module Squeeze
 
           # Decoded token from authentication token
           def token
-            @token ||= HashWithIndifferentAccess.new(JWT.decode(authentication_token, secret, true, decode_options).first)
+            @token ||= HashWithIndifferentAccess.new(
+              JWT.decode(authentication_token, secret, true, decode_options).first
+            )
           rescue JWT::DecodeError, JWT::ExpiredSignature, JWT::InvalidIatError
             nil
           end

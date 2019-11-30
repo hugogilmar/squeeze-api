@@ -24,6 +24,7 @@ FactoryBot.find_definitions
 module ActiveSupport
   class TestCase
     include FactoryBot::Syntax::Methods
+    include Warden::Test::Helpers
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all

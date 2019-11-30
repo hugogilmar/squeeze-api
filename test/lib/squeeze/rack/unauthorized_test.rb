@@ -2,6 +2,7 @@
 
 require('test_helper')
 require('rack/test')
+require('squeeze/rack/unauthorized')
 
 module Squeeze
   module Rack

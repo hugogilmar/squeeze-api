@@ -2,6 +2,7 @@
 
 require('test_helper')
 require('rack/test')
+require('squeeze/rack/health_check')
 
 module Squeeze
   module Rack

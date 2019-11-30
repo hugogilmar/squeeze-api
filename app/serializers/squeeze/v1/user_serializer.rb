@@ -5,7 +5,7 @@ module Squeeze
     # Users serializer
     class UserSerializer < ApplicationSerializer
       attributes :uuid, :id, :email, :created_at, :updated_at
-      has_one :profile
+      has_one :profile, serializer: ProfileSerializer
     end
   end
 end

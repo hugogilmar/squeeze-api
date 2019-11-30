@@ -4,7 +4,7 @@ module Squeeze
   module V1
     # Accounts controller
     class AccountsController < ApplicationController
-      # Accounts show endpoint
+      # Accounts index endpoint
       def index
         result = Accounts::SearchCommand.new(current_user: current_user).call(search_params)
 

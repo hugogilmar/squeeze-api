@@ -8,11 +8,11 @@ module Squeeze
 
       # Authentications create endpoint
       def create
-        command = Authentications::CreateCommand.new(warden: warden).call
+        result = Authentications::CreateCommand.new(warden: warden).call
 
-        unauthorize! unless command.success?
+        unauthorize! unless result.success?
 
-        render(json: command.value, status: :created)
+        render(json: result.value.as_json, status: :created)
       end
     end
   end

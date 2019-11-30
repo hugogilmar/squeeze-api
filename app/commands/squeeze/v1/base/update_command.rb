@@ -5,7 +5,7 @@ module Squeeze
     module Base
       # Update command base class
       class UpdateCommand < ApplicationCommand
-        context current_user: nil
+        context current_user: nil, resource_id: nil
 
         # Command execution
         def call(params)
@@ -32,7 +32,7 @@ module Squeeze
 
         # Serializer builder
         def serializer
-          @serializer ||= serializer_class.new(form.model)
+          @serializer ||= ActiveModelSerializers::SerializableResource.new(model, serializer: serializer_class)
         end
 
         # Form class used for params validation

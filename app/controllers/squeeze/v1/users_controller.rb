@@ -8,20 +8,20 @@ module Squeeze
 
       # Users create endpoint
       def create
-        command = Users::CreateCommand.new.call(create_user_params)
+        result = Users::CreateCommand.new.call(create_user_params)
 
-        raise(ActiveRecord::RecordInvalid, command.error) unless command.success?
+        raise(ActiveRecord::RecordInvalid, result.error) unless result.success?
 
-        render(json: command.value, status: :created)
+        render(json: result.value.as_json, status: :created)
       end
 
       # Users profile update endpoint
       def update
-        command = Users::UpdateCommand.new(current_user: current_user).call(update_user_params)
+        result = Users::UpdateCommand.new(current_user: current_user).call(update_user_params)
 
-        raise(ActiveRecord::RecordInvalid, command.error) unless command.success?
+        raise(ActiveRecord::RecordInvalid, result.error) unless result.success?
 
-        render(json: command.value, status: :created)
+        render(json: result.value.as_json, status: :created)
       end
 
       private

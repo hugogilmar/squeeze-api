@@ -16,17 +16,9 @@ module Squeeze
         render json: { error: e.message.capitalize, detail: e.record.errors }, status: 422
       end
 
-      # rescue_from ActionController::RoutingError do |e|
-      #   render json: { error: e.message.capitalize }, status: 404
-      # end
-
-      # rescue_from AbstractController::ActionNotFound do |e|
-      #   render json: { error: e.message.capitalize }, status: 404
-      # end
-
-      # rescue_from ActiveRecord::RecordNotFound do |e|
-      #   render json: { error: e.message.capitalize }, status: 404
-      # end
+      rescue_from ActiveRecord::RecordNotFound do |_e|
+        render json: { error: 'Could not find resource with provided id' }, status: 404
+      end
     end
   end
 end

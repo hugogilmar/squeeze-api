@@ -3,8 +3,7 @@
 module Squeeze
   module V1
     # Users serializer
-    class UserSerializer < ActiveModel::Serializer
-      type :data
+    class UserSerializer < ApplicationSerializer
       attributes :uuid, :id, :email, :created_at, :updated_at
       has_one :profile
     end

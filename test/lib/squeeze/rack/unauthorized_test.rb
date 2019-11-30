@@ -2,7 +2,6 @@
 
 require('test_helper')
 require('rack/test')
-require('squeeze/rack/unauthorized')
 
 module Squeeze
   module Rack
@@ -10,7 +9,7 @@ module Squeeze
       include ::Rack::Test::Methods
 
       def app
-        Rack::Unauthorized.new
+        Unauthorized.new
       end
 
       def test_app

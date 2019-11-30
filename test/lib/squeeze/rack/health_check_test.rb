@@ -2,7 +2,6 @@
 
 require('test_helper')
 require('rack/test')
-require('squeeze/rack/health_check')
 
 module Squeeze
   module Rack
@@ -10,7 +9,7 @@ module Squeeze
       include ::Rack::Test::Methods
 
       def app
-        Rack::HealthCheck.new
+        HealthCheck.new
       end
 
       def test_app

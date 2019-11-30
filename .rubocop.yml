@@ -3,8 +3,9 @@ AllCops:
   TargetRubyVersion: 2.5
   Exclude:
     - 'app/views/**/*'
-    - 'db/**/*'
     - 'bin/**/*'
+    - 'db/**/*'
+    - 'test/**/*'
 Bundler/GemComment:
   Enabled: false
 Lint/NumberConversion:

@@ -2,8 +2,6 @@
 
 require('test_helper')
 
-require_relative('../../../support/token_test_helpers')
-
 module Squeeze
   module V1
     class UsersControllerTest < ActionDispatch::IntegrationTest

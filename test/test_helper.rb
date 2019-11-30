@@ -5,8 +5,6 @@ require('simplecov')
 SimpleCov.start('rails') do
   add_filter '/bin/'
   add_filter '/db/'
-  add_filter '/lib/rack/'
-  add_filter '/lib/warden/'
   add_filter '/test/'
   add_group 'Commands', 'app/commands'
   add_group 'Forms', 'app/forms'
@@ -19,6 +17,7 @@ require_relative('../config/environment')
 require('factory_bot')
 require('faker')
 require('rails/test_help')
+require('support/token_test_helpers')
 
 FactoryBot.find_definitions
 

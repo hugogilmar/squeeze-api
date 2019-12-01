@@ -3,6 +3,6 @@
 require('test_helper')
 
 module Squeeze
-  class AccountTest < Minitest::Test
+  class BudgetTest < Minitest::Test
   end
 end

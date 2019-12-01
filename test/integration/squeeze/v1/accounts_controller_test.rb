@@ -5,8 +5,6 @@ require('test_helper')
 module Squeeze
   module V1
     class AccountsControllerTest < ActionDispatch::IntegrationTest
-      include TokenTestHelpers
-
       ACCOUNT_KINDS = %i[bank_account cash credit_card debit_card].freeze
       public_constant :ACCOUNT_KINDS
 

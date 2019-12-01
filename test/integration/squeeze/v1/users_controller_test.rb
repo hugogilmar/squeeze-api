@@ -5,8 +5,6 @@ require('test_helper')
 module Squeeze
   module V1
     class UsersControllerTest < ActionDispatch::IntegrationTest
-      include TokenTestHelpers
-
       def setup
         @user = FactoryBot.create(:user)
         @token = generate_authentication_token(@user)

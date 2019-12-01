@@ -7,8 +7,6 @@ require('squeeze/rack/unauthorized')
 module Squeeze
   module Rack
     class UnauthorizedTest < Minitest::Test
-      include ::Rack::Test::Methods
-
       def app
         Unauthorized.new
       end

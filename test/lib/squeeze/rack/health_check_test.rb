@@ -7,9 +7,6 @@ require('squeeze/rack/health_check')
 module Squeeze
   module Rack
     class HealthCheckTest < Minitest::Test
-      include ::Rack::Test::Methods
-      include StubTesttHelpers
-
       def app
         HealthCheck.new
       end

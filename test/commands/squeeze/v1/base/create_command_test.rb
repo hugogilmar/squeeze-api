@@ -12,9 +12,9 @@ module Squeeze
           @command = DummyCreateCommand.new
         end
 
-        def test_model_class
+        def test_model
           assert_raises NotImplementedError do
-            @command.__send__(:model_class)
+            @command.__send__(:model)
           end
         end
 

@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 require_relative('boot')
-require_relative('../lib/rack/unauthorized')
-require_relative('../lib/warden/authentication/strategies/password')
-require_relative('../lib/warden/authentication/strategies/token')
 
 require('rails')
 # Pick the frameworks you want:
@@ -44,9 +41,9 @@ module Squeeze
     config.api_only = true
 
     # Warden middleware configuration
-    config.middleware.use(Warden::Manager) do |manager|
+    config.middleware.use(::Warden::Manager) do |manager|
       manager.default_strategies(:passworkd, :token)
-      manager.failure_app = Rack::Unauthorized.new
+      manager.failure_app = Rack::App::Failure.new
     end
 
     # ActionMailer SMTP settings
@@ -59,5 +56,12 @@ module Squeeze
       port: ENV['SMTP_PORT'],
       user_name: ENV['SMTP_USER_NAME']
     }
+
+    # Rails generators settings
+    config.generators do |g|
+      g.orm(:active_record)
+      g.template_engine(:erb)
+      g.test_framework(:test_unit, fixture: false)
+    end
   end
 end

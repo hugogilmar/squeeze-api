@@ -7,8 +7,9 @@
 !/log/.keep
 !/tmp/.keep
 !/storage/.keep
-/config/master.key
 /config/database.yml
+/config/master.key
+/config/redis.yml
 /.bundle
 /.idea
 /.byebug_history

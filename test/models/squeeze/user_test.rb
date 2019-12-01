@@ -3,6 +3,6 @@
 require('test_helper')
 
 module Squeeze
-  class UserTest < ActiveSupport::TestCase
+  class UserTest < Minitest::Test
   end
 end

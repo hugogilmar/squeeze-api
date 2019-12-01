@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require('test_helper')
+require('squeeze/feature')
 
 module Squeeze
   class FeatureTest < Minitest::Test
@@ -41,7 +42,7 @@ module Squeeze
       assert_equal(true, Feature.active?(:foo))
     end
 
-    def deactivate_percentage
+    def test_deactivate_percentage
       Feature.deactivate(:foo)
       Feature.activate_percentage(:foo, 100)
       assert_equal(true, Feature.active?(:foo))

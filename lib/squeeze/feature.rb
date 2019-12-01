@@ -10,8 +10,21 @@ module Squeeze
 
     # Initialize redis and rollout
     def initialize
-      @redis = Redis.new
-      @rollout = Rollout.new(@redis)
+      @rollout = Rollout.new(redis)
+    end
+
+    # Redis connection instance
+    def redis
+      @redis ||= Redis.new(url: redis_url)
+    end
+
+    # Redis URL configuration
+    def redis_url
+      config_file = Rails.root.join('config', 'redis.yml')
+      return ENV['REDIS_URL'] unless File.exist?(config_file)
+
+      config = YAML.safe_load(ERB.new(File.read(config_file)).result)[Rails.env]
+      config.fetch('url')
     end
 
     # Check if feature is globally active

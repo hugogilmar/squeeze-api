@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require('jwt')
+require('ostruct')
 
 module Squeeze
   module V1
@@ -14,10 +15,30 @@ module Squeeze
           warden.authenticate(:password)
           return failure(:unauthorized) unless warden.authenticated?
 
-          success(data: { authentication_token: authentication_token, expires_at: expires_at })
+          success(serializer)
         end
 
         private
+
+        # Model builder
+        def model
+          @model ||= model_class.new(authentication_token, expires_at)
+        end
+
+        # Serializer builder
+        def serializer
+          @serializer ||= ActiveModelSerializers::SerializableResource.new(model, serializer: serializer_class)
+        end
+
+        # Model class used for model builder
+        def model_class
+          AuthenticationToken
+        end
+
+        # Serializer class used for json serialization
+        def serializer_class
+          AuthenticationTokenSerializer
+        end
 
         # Token expiration timestamp
         def expires_at

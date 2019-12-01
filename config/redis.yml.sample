@@ -1,0 +1,5 @@
+development:
+  url: <%= ENV['REDIS_URL'] %>
+
+test:
+  url: <%= ENV['TEST_REDIS_URL'] %>

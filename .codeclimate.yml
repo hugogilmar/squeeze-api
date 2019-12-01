@@ -1,5 +1,12 @@
 plugins:
-  rubocop:
-    enabled: true
   brakeman:
     enabled: true
+  duplication:
+    enabled: true
+  rubocop:
+    enabled: true
+exclude_patterns:
+  - 'app/views/**/*'
+  - 'bin/**/*'
+  - 'db/**/*'
+  - 'test/**/*'

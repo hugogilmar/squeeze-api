@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative('../../lib/warden/authentication/strategies/password')
-require_relative('../../lib/warden/authentication/strategies/token')
+require('squeeze/warden/authentication/strategies/password')
+require('squeeze/warden/authentication/strategies/token')
 
-Warden::Strategies.add(:password, Warden::Authentication::Strategies::Password)
-Warden::Strategies.add(:token, Warden::Authentication::Strategies::Token)
+Warden::Strategies.add(:password, Squeeze::Warden::Authentication::Strategies::Password)
+Warden::Strategies.add(:token, Squeeze::Warden::Authentication::Strategies::Token)

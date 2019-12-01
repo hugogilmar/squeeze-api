@@ -2,31 +2,26 @@
 
 require('simplecov')
 
-SimpleCov.start('rails') do
-  add_filter '/bin/'
-  add_filter '/db/'
-  add_filter '/lib/rack/'
-  add_filter '/lib/warden/'
-  add_filter '/test/'
-  add_group 'Commands', 'app/commands'
-  add_group 'Forms', 'app/forms'
-  add_group 'Serializers', 'app/serializers'
-end
-
 ENV['RAILS_ENV'] ||= 'test'
+ENV['RACK_ENV'] ||= 'test'
+
 require_relative('../config/environment')
 
+require('minitest/autorun')
 require('factory_bot')
 require('faker')
 require('rails/test_help')
+require('rack/test')
+require('support/stub_test_helpers')
+require('support/token_test_helpers')
 
 FactoryBot.find_definitions
 
-module ActiveSupport
-  class TestCase
-    include FactoryBot::Syntax::Methods
-
-    # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-    fixtures :all
+module Minitest
+  class Test
+    include ActionDispatch::Assertions::ResponseAssertions
+    include Rack::Test::Methods
+    include StubTesttHelpers
+    include TokenTestHelpers
   end
 end

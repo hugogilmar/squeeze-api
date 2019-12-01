@@ -7,9 +7,9 @@ module Squeeze
       class CreateCommand < Base::CreateCommand
         private
 
-        # Model class used for database persistance
-        def model_class
-          User
+        # Model builder used for database persistance
+        def model
+          @model ||= User.new
         end
 
         # Form class used for params validation

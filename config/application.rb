@@ -43,7 +43,7 @@ module Squeeze
     # Warden middleware configuration
     config.middleware.use(::Warden::Manager) do |manager|
       manager.default_strategies(:passworkd, :token)
-      manager.failure_app = Squeeze::Rack::Unauthorized.new
+      manager.failure_app = Rack::App::Failure.new
     end
 
     # ActionMailer SMTP settings

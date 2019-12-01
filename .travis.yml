@@ -37,8 +37,8 @@ before_script:
   - docker-compose build
 
 script:
-  - docker-compose run --rm app bundle exec rails db:test:prepare
-  - docker-compose run --rm app bundle exec rails test
+  - docker-compose run --rm app bundle exec rake db:test:prepare
+  - docker-compose run --rm app bundle exec rake test
 
 after_script:
   - docker-compose down -v

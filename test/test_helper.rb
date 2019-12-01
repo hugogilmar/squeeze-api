@@ -14,9 +14,11 @@ end
 ENV['RAILS_ENV'] ||= 'test'
 require_relative('../config/environment')
 
+require('minitest/autorun')
 require('factory_bot')
 require('faker')
 require('rails/test_help')
+require('support/stub_test_helpers')
 require('support/token_test_helpers')
 
 FactoryBot.find_definitions

@@ -3,7 +3,7 @@
   "info": {
     "title": "Squeeze API",
     "version": "1.0",
-    "description": "Squeeze App API",
+    "description": "Squeeze App API OpenAPI v3 documentation",
     "contact": {
       "name": "Squeeze Team",
       "email": "hugo@squeeze.app",
@@ -25,24 +25,26 @@
     },
     {
       "url": "https://api.squeeze.app",
-      "description": ""
+      "description": "Production"
     }
   ],
   "paths": {
     "/v1/users": {
       "post": {
         "summary": "User registration",
-        "tags": [],
+        "tags": [
+          "Users"
+        ],
         "responses": {
           "201": {
             "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "User",
                   "type": "object",
                   "properties": {
                     "data": {
+                      "title": "User",
                       "type": "object",
                       "properties": {
                         "id": {
@@ -89,9 +91,25 @@
                               "type": "string",
                               "format": "date-time"
                             }
-                          }
+                          },
+                          "required": [
+                            "id",
+                            "uuid",
+                            "first_name",
+                            "last_name",
+                            "created_at",
+                            "updated_at"
+                          ]
                         }
-                      }
+                      },
+                      "required": [
+                        "id",
+                        "uuid",
+                        "email",
+                        "created_at",
+                        "updated_at",
+                        "profile"
+                      ]
                     }
                   }
                 }
@@ -111,29 +129,15 @@
                 "schema": {
                   "title": "General Error",
                   "type": "object",
+                  "description": "",
                   "properties": {
                     "error": {
                       "type": "string"
                     }
                   },
-                  "description": "General HTTP Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "description": "General HTTP Error"
+                  "required": [
+                    "error"
+                  ]
                 }
               }
             }
@@ -145,6 +149,7 @@
                 "schema": {
                   "title": "UnprocessableError",
                   "type": "object",
+                  "description": "",
                   "properties": {
                     "error": {
                       "type": "string"
@@ -153,7 +158,10 @@
                       "type": "object"
                     }
                   },
-                  "description": "Unprocessable Entity HTTP Error"
+                  "required": [
+                    "error",
+                    "detail"
+                  ]
                 }
               }
             }
@@ -164,20 +172,23 @@
           "content": {
             "application/json": {
               "schema": {
-                "title": "CreateUser",
                 "type": "object",
                 "properties": {
                   "data": {
+                    "title": "CreateUser",
                     "type": "object",
                     "properties": {
                       "email": {
-                        "type": "string"
+                        "type": "string",
+                        "format": "email"
                       },
                       "password": {
-                        "type": "string"
+                        "type": "string",
+                        "format": "password"
                       },
                       "password_confirmation": {
-                        "type": "string"
+                        "type": "string",
+                        "format": "password"
                       },
                       "profile": {
                         "title": "CreateProfile",
@@ -189,9 +200,19 @@
                           "last_name": {
                             "type": "string"
                           }
-                        }
+                        },
+                        "required": [
+                          "first_name",
+                          "last_name"
+                        ]
                       }
-                    }
+                    },
+                    "required": [
+                      "email",
+                      "password",
+                      "password_confirmation",
+                      "profile"
+                    ]
                   }
                 }
               }
@@ -199,7 +220,7 @@
           },
           "description": "User registration JSON request structure"
         },
-        "description": "Allow user registration with nested profile"
+        "description": "User registration with nested profile"
       }
     },
     "/v1/user": {
@@ -216,6 +237,7 @@
                   "type": "object",
                   "properties": {
                     "data": {
+                      "title": "User",
                       "type": "object",
                       "properties": {
                         "id": {
@@ -262,9 +284,25 @@
                               "type": "string",
                               "format": "date-time"
                             }
-                          }
+                          },
+                          "required": [
+                            "id",
+                            "uuid",
+                            "first_name",
+                            "last_name",
+                            "created_at",
+                            "updated_at"
+                          ]
                         }
-                      }
+                      },
+                      "required": [
+                        "id",
+                        "uuid",
+                        "email",
+                        "created_at",
+                        "updated_at",
+                        "profile"
+                      ]
                     }
                   }
                 }
@@ -278,12 +316,15 @@
                 "schema": {
                   "title": "General Error",
                   "type": "object",
+                  "description": "",
                   "properties": {
                     "error": {
                       "type": "string"
                     }
                   },
-                  "description": "General HTTP Error"
+                  "required": [
+                    "error"
+                  ]
                 }
               }
             }
@@ -295,12 +336,15 @@
                 "schema": {
                   "title": "General Error",
                   "type": "object",
+                  "description": "",
                   "properties": {
                     "error": {
                       "type": "string"
                     }
                   },
-                  "description": "General HTTP Error"
+                  "required": [
+                    "error"
+                  ]
                 }
               }
             }
@@ -312,6 +356,7 @@
                 "schema": {
                   "title": "UnprocessableError",
                   "type": "object",
+                  "description": "",
                   "properties": {
                     "error": {
                       "type": "string"
@@ -320,38 +365,63 @@
                       "type": "object"
                     }
                   },
-                  "description": "Unprocessable Entity HTTP Error"
+                  "required": [
+                    "error",
+                    "detail"
+                  ]
                 }
               }
             }
           }
         },
-        "description": "Allow user profile update",
+        "description": "User profile update",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "title": "UpdateProfile",
                 "type": "object",
+                "description": "",
                 "properties": {
                   "data": {
+                    "title": "UpdateUser",
                     "type": "object",
                     "properties": {
-                      "first_name": {
-                        "type": "string"
-                      },
-                      "last_name": {
-                        "type": "string"
+                      "profile": {
+                        "title": "UpdateProfile",
+                        "type": "object",
+                        "properties": {
+                          "first_name": {
+                            "type": "string"
+                          },
+                          "last_name": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "first_name",
+                          "last_name"
+                        ]
                       }
-                    }
+                    },
+                    "required": [
+                      "profile"
+                    ]
                   }
-                },
-                "description": "Profile Update"
+                }
               }
             }
           },
           "description": "User profile update JSON request structure"
-        }
+        },
+        "security": [
+          {
+            "Authentication token": []
+          }
+        ],
+        "tags": [
+          "Users"
+        ]
       },
       "patch": {
         "summary": "User profile update",
@@ -366,6 +436,7 @@
                   "type": "object",
                   "properties": {
                     "data": {
+                      "title": "User",
                       "type": "object",
                       "properties": {
                         "id": {
@@ -412,9 +483,25 @@
                               "type": "string",
                               "format": "date-time"
                             }
-                          }
+                          },
+                          "required": [
+                            "id",
+                            "uuid",
+                            "first_name",
+                            "last_name",
+                            "created_at",
+                            "updated_at"
+                          ]
                         }
-                      }
+                      },
+                      "required": [
+                        "id",
+                        "uuid",
+                        "email",
+                        "created_at",
+                        "updated_at",
+                        "profile"
+                      ]
                     }
                   }
                 }
@@ -428,12 +515,15 @@
                 "schema": {
                   "title": "General Error",
                   "type": "object",
+                  "description": "",
                   "properties": {
                     "error": {
                       "type": "string"
                     }
                   },
-                  "description": "General HTTP Error"
+                  "required": [
+                    "error"
+                  ]
                 }
               }
             }
@@ -445,12 +535,15 @@
                 "schema": {
                   "title": "General Error",
                   "type": "object",
+                  "description": "",
                   "properties": {
                     "error": {
                       "type": "string"
                     }
                   },
-                  "description": "General HTTP Error"
+                  "required": [
+                    "error"
+                  ]
                 }
               }
             }
@@ -462,6 +555,7 @@
                 "schema": {
                   "title": "UnprocessableError",
                   "type": "object",
+                  "description": "",
                   "properties": {
                     "error": {
                       "type": "string"
@@ -470,7 +564,10 @@
                       "type": "object"
                     }
                   },
-                  "description": "Unprocessable Entity HTTP Error"
+                  "required": [
+                    "error",
+                    "detail"
+                  ]
                 }
               }
             }
@@ -483,34 +580,1105 @@
               "schema": {
                 "title": "UpdateProfile",
                 "type": "object",
+                "description": "",
+                "properties": {
+                  "data": {
+                    "title": "UpdateUser",
+                    "type": "object",
+                    "properties": {
+                      "profile": {
+                        "title": "UpdateProfile",
+                        "type": "object",
+                        "properties": {
+                          "first_name": {
+                            "type": "string"
+                          },
+                          "last_name": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "first_name",
+                          "last_name"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "profile"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "Authentication token": []
+          }
+        ]
+      }
+    },
+    "/v1/authentication": {
+      "post": {
+        "summary": "Users authentication",
+        "operationId": "post-v1-authentication",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "AuthenticationToken",
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "title": "AuthenticationToken",
+                      "type": "object",
+                      "properties": {
+                        "authentication_token": {
+                          "type": "string"
+                        },
+                        "expires_at": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      },
+                      "required": [
+                        "authentication_token",
+                        "expires_at"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "General Error",
+                  "type": "object",
+                  "description": "",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "General Error",
+                  "type": "object",
+                  "description": "",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "UnprocessableError",
+                  "type": "object",
+                  "description": "",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "detail": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "error",
+                    "detail"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Users authentication by email and password",
+        "tags": [
+          "Authentication"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "UserCredentials",
+                "type": "object",
+                "x-examples": {
+                  "example-1": {}
+                },
+                "properties": {
+                  "data": {
+                    "title": "UserCredentials",
+                    "type": "object",
+                    "properties": {
+                      "email": {
+                        "type": "string",
+                        "format": "email"
+                      },
+                      "password": {
+                        "type": "string",
+                        "format": "password"
+                      }
+                    },
+                    "required": [
+                      "email",
+                      "password"
+                    ]
+                  }
+                }
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "title": "UserCredentials",
+                "type": "object",
+                "x-examples": {
+                  "example-1": {}
+                },
                 "properties": {
                   "data": {
                     "type": "object",
                     "properties": {
-                      "first_name": {
-                        "type": "string"
+                      "email": {
+                        "type": "string",
+                        "format": "email"
                       },
-                      "last_name": {
-                        "type": "string"
+                      "password": {
+                        "type": "string",
+                        "format": "password"
                       }
-                    }
+                    },
+                    "required": [
+                      "email",
+                      "password"
+                    ]
                   }
-                },
-                "description": "Profile Update"
+                }
               }
             }
           },
           "description": ""
         }
       }
+    },
+    "/v1/accounts": {
+      "get": {
+        "summary": "User accounts search",
+        "tags": [
+          "Accounts"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "title": "Account",
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "uud": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "reference_number": {
+                            "type": "string"
+                          },
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "updated_at": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "bank_account",
+                              "cash",
+                              "credit_card",
+                              "debit_card"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "uud",
+                          "description",
+                          "reference_number",
+                          "created_at",
+                          "updated_at",
+                          "kind"
+                        ]
+                      }
+                    },
+                    "meta": {
+                      "title": "Metadata",
+                      "type": "object",
+                      "properties": {
+                        "total_count": {
+                          "type": "number"
+                        },
+                        "total_pages": {
+                          "type": "number"
+                        },
+                        "current_page": {
+                          "type": "number"
+                        },
+                        "next_page": {
+                          "type": "number"
+                        },
+                        "prev_page": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "total_count",
+                        "total_pages",
+                        "current_page",
+                        "next_page",
+                        "prev_page"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "General Error",
+                  "type": "object",
+                  "description": "",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-v1-accounts",
+        "description": "User accounts search",
+        "parameters": [
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "page",
+            "description": ""
+          },
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "per_page"
+          }
+        ],
+        "security": [
+          {
+            "Authentication token": []
+          }
+        ]
+      },
+      "parameters": [],
+      "post": {
+        "summary": "Create user account",
+        "operationId": "post-v1-accounts",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "title": "Account",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "uud": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "reference_number": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "bank_account",
+                            "cash",
+                            "credit_card",
+                            "debit_card"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "uud",
+                        "description",
+                        "reference_number",
+                        "created_at",
+                        "updated_at",
+                        "kind"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "General Error",
+                  "type": "object",
+                  "description": "",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "General Error",
+                  "type": "object",
+                  "description": "",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "General Error",
+                  "type": "object",
+                  "description": "",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "UnprocessableError",
+                  "type": "object",
+                  "description": "",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "detail": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "error",
+                    "detail"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Create user account",
+        "security": [
+          {
+            "Authentication token": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "title": "StoreAccount",
+                    "type": "object",
+                    "properties": {
+                      "description": {
+                        "type": "string"
+                      },
+                      "kind": {
+                        "type": "string"
+                      },
+                      "reference_number": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "description",
+                      "kind",
+                      "reference_number"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Accounts"
+        ]
+      }
+    },
+    "/v1/accounts/{id}": {
+      "parameters": [
+        {
+          "type": "string",
+          "name": "id",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          },
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "User account find",
+        "tags": [
+          "Accounts"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "title": "Account",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "uud": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "reference_number": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "bank_account",
+                            "cash",
+                            "credit_card",
+                            "debit_card"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "uud",
+                        "description",
+                        "reference_number",
+                        "created_at",
+                        "updated_at",
+                        "kind"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "General Error",
+                  "type": "object",
+                  "description": "",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "General Error",
+                  "type": "object",
+                  "description": "",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-v1-accounts-member",
+        "description": "User account find",
+        "security": [
+          {
+            "Authentication token": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "User account update",
+        "operationId": "put-v1-accounts-member",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "title": "Account",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "uud": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "reference_number": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "bank_account",
+                            "cash",
+                            "credit_card",
+                            "debit_card"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "uud",
+                        "description",
+                        "reference_number",
+                        "created_at",
+                        "updated_at",
+                        "kind"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "General Error",
+                  "type": "object",
+                  "description": "",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "General Error",
+                  "type": "object",
+                  "description": "",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "General Error",
+                  "type": "object",
+                  "description": "",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "UnprocessableError",
+                  "type": "object",
+                  "description": "",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "detail": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "error",
+                    "detail"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Authentication token": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "title": "StoreAccount",
+                    "type": "object",
+                    "properties": {
+                      "description": {
+                        "type": "string"
+                      },
+                      "kind": {
+                        "type": "string"
+                      },
+                      "reference_number": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "description",
+                      "kind",
+                      "reference_number"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Accounts"
+        ],
+        "description": "User account update"
+      },
+      "patch": {
+        "summary": "User account update",
+        "operationId": "patch-v1-accounts-member",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "title": "Account",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "uud": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "reference_number": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "bank_account",
+                            "cash",
+                            "credit_card",
+                            "debit_card"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "uud",
+                        "description",
+                        "reference_number",
+                        "created_at",
+                        "updated_at",
+                        "kind"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "General Error",
+                  "type": "object",
+                  "description": "",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "General Error",
+                  "type": "object",
+                  "description": "",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "General Error",
+                  "type": "object",
+                  "description": "",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "UnprocessableError",
+                  "type": "object",
+                  "description": "",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "detail": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "error",
+                    "detail"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Authentication token": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "title": "StoreAccount",
+                    "type": "object",
+                    "properties": {
+                      "description": {
+                        "type": "string"
+                      },
+                      "kind": {
+                        "type": "string"
+                      },
+                      "reference_number": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "description",
+                      "kind",
+                      "reference_number"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "User account update",
+        "tags": [
+          "Accounts"
+        ]
+      },
+      "delete": {
+        "summary": "User account delete",
+        "operationId": "delete-v1-accounts-member",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "General Error",
+                  "type": "object",
+                  "description": "",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "General Error",
+                  "type": "object",
+                  "description": "",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Authentication token": []
+          }
+        ],
+        "description": "User account delete",
+        "tags": [
+          "Accounts"
+        ]
+      }
     }
   },
   "components": {
     "securitySchemes": {
-      "1236547890": {
+      "Authentication token": {
         "type": "apiKey",
         "in": "header",
-        "name": "Authorization"
+        "name": "Authorization",
+        "description": "Users authentication endpoint will provide a JWT for authorization. Expiration time is 24 hours after generation."
       }
     },
     "schemas": {
@@ -518,7 +1686,27 @@
         "title": "User",
         "type": "object",
         "properties": {
-          "data": {
+          "id": {
+            "type": "integer"
+          },
+          "uuid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "profile": {
+            "title": "Profile",
             "type": "object",
             "properties": {
               "id": {
@@ -528,9 +1716,11 @@
                 "type": "string",
                 "format": "uuid"
               },
-              "email": {
-                "type": "string",
-                "format": "email"
+              "first_name": {
+                "type": "string"
+              },
+              "last_name": {
+                "type": "string"
               },
               "created_at": {
                 "type": "string",
@@ -539,37 +1729,26 @@
               "updated_at": {
                 "type": "string",
                 "format": "date-time"
-              },
-              "profile": {
-                "title": "Profile",
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "integer"
-                  },
-                  "uuid": {
-                    "type": "string",
-                    "format": "uuid"
-                  },
-                  "first_name": {
-                    "type": "string"
-                  },
-                  "last_name": {
-                    "type": "string"
-                  },
-                  "created_at": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "updated_at": {
-                    "type": "string",
-                    "format": "date-time"
-                  }
-                }
               }
-            }
+            },
+            "required": [
+              "id",
+              "uuid",
+              "first_name",
+              "last_name",
+              "created_at",
+              "updated_at"
+            ]
           }
-        }
+        },
+        "required": [
+          "id",
+          "uuid",
+          "email",
+          "created_at",
+          "updated_at",
+          "profile"
+        ]
       },
       "Profile": {
         "title": "Profile",
@@ -596,39 +1775,55 @@
             "type": "string",
             "format": "date-time"
           }
-        }
+        },
+        "required": [
+          "id",
+          "uuid",
+          "first_name",
+          "last_name",
+          "created_at",
+          "updated_at"
+        ]
       },
       "CreateUser": {
         "title": "CreateUser",
         "type": "object",
         "properties": {
-          "data": {
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "type": "string",
+            "format": "password"
+          },
+          "password_confirmation": {
+            "type": "string",
+            "format": "password"
+          },
+          "profile": {
+            "title": "CreateProfile",
             "type": "object",
             "properties": {
-              "email": {
+              "first_name": {
                 "type": "string"
               },
-              "password": {
+              "last_name": {
                 "type": "string"
-              },
-              "password_confirmation": {
-                "type": "string"
-              },
-              "profile": {
-                "title": "CreateProfile",
-                "type": "object",
-                "properties": {
-                  "first_name": {
-                    "type": "string"
-                  },
-                  "last_name": {
-                    "type": "string"
-                  }
-                }
               }
-            }
+            },
+            "required": [
+              "first_name",
+              "last_name"
+            ]
           }
-        }
+        },
+        "required": [
+          "email",
+          "password",
+          "password_confirmation",
+          "profile"
+        ]
       },
       "CreateProfile": {
         "title": "CreateProfile",
@@ -640,21 +1835,29 @@
           "last_name": {
             "type": "string"
           }
-        }
+        },
+        "required": [
+          "first_name",
+          "last_name"
+        ]
       },
       "GeneralError": {
         "title": "General Error",
         "type": "object",
+        "description": "",
         "properties": {
           "error": {
             "type": "string"
           }
         },
-        "description": "General HTTP Error"
+        "required": [
+          "error"
+        ]
       },
       "UnprocessableError": {
         "title": "UnprocessableError",
         "type": "object",
+        "description": "",
         "properties": {
           "error": {
             "type": "string"
@@ -663,13 +1866,159 @@
             "type": "object"
           }
         },
-        "description": "Unprocessable Entity HTTP Error"
+        "required": [
+          "error",
+          "detail"
+        ]
       },
       "UpdateProfile": {
         "title": "UpdateProfile",
         "type": "object",
         "properties": {
-          "data": {
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "first_name",
+          "last_name"
+        ]
+      },
+      "Account": {
+        "title": "Account",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "uud": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": {
+            "type": "string"
+          },
+          "reference_number": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "bank_account",
+              "cash",
+              "credit_card",
+              "debit_card"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "uud",
+          "description",
+          "reference_number",
+          "created_at",
+          "updated_at",
+          "kind"
+        ]
+      },
+      "AuthenticationToken": {
+        "title": "AuthenticationToken",
+        "type": "object",
+        "properties": {
+          "authentication_token": {
+            "type": "string"
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "authentication_token",
+          "expires_at"
+        ]
+      },
+      "UserCredentials": {
+        "title": "UserCredentials",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "type": "string",
+            "format": "password"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "Metadata": {
+        "title": "Metadata",
+        "type": "object",
+        "properties": {
+          "total_count": {
+            "type": "number"
+          },
+          "total_pages": {
+            "type": "number"
+          },
+          "current_page": {
+            "type": "number"
+          },
+          "next_page": {
+            "type": "number"
+          },
+          "prev_page": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "total_count",
+          "total_pages",
+          "current_page",
+          "next_page",
+          "prev_page"
+        ]
+      },
+      "StoreAccount": {
+        "title": "StoreAccount",
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "reference_number": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "description",
+          "kind",
+          "reference_number"
+        ]
+      },
+      "UpdateUser": {
+        "title": "UpdateUser",
+        "type": "object",
+        "properties": {
+          "profile": {
+            "title": "UpdateProfile",
             "type": "object",
             "properties": {
               "first_name": {
@@ -678,11 +2027,31 @@
               "last_name": {
                 "type": "string"
               }
-            }
+            },
+            "required": [
+              "first_name",
+              "last_name"
+            ]
           }
         },
-        "description": "Profile Update"
+        "required": [
+          "profile"
+        ]
       }
     }
-  }
+  },
+  "tags": [
+    {
+      "name": "Authentication",
+      "description": "Users authentication"
+    },
+    {
+      "name": "Users",
+      "description": "Users registration and profile update"
+    },
+    {
+      "name": "Accounts",
+      "description": "User accounts management"
+    }
+  ]
 }

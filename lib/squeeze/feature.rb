@@ -20,10 +20,10 @@ module Squeeze
 
     # Redis URL configuration
     def redis_url
-      config_file = Rails.root.join('config/redis.yml')
+      config_file = Rails.root.join('config', 'redis.yml')
       return ENV['REDIS_URL'] unless File.exist?(config_file)
 
-      config = YAML.load(ERB.new(File.read(config_file)).result)[Rails.env]
+      config = YAML.safe_load(ERB.new(File.read(config_file)).result)[Rails.env]
       config.fetch('url')
     end
 

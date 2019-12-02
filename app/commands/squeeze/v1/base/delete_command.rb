@@ -9,7 +9,7 @@ module Squeeze
 
         # Command execution
         def call
-          return failure(model) unless model.destroy
+          model.destroy!
 
           success(model)
         end

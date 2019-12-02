@@ -10,8 +10,6 @@ module Squeeze
       def create
         result = Authentications::CreateCommand.new(warden: warden).call
 
-        unauthorize! unless result.success?
-
         render(json: result.value.as_json, status: :created)
       end
     end

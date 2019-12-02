@@ -98,6 +98,14 @@ module Squeeze
         assert_response :not_found
       end
 
+      test 'should not delete budget by exception' do
+        raises_exception = -> { raise ActiveRecord::RecordNotDestroyed.new(nil, @budget) }
+        stub_any_instance(ActiveRecord::Base, :destroy!, raises_exception) do
+          delete v1_budget_url(id: @budget.id), headers: @headers
+          assert_response :unprocessable_entity
+        end
+      end
+
       test 'should find budget' do
         get v1_budget_url(id: @budget.id), headers: @headers
         assert_response :success

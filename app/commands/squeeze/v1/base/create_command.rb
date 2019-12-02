@@ -9,13 +9,11 @@ module Squeeze
 
         # Command execution
         def call(params)
-          if form.validate(params)
-            return failure(form.model) unless form.save
+          raise(ActiveRecord::RecordInvalid, form) unless form.validate(params)
 
-            success(serializer)
-          else
-            failure(form)
-          end
+          form.sync
+          form.model.save!
+          success(serializer)
         end
 
         private

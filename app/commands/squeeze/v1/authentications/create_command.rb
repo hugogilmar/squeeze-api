@@ -12,9 +12,7 @@ module Squeeze
 
         # Command execution
         def call
-          warden.authenticate(:password)
-          return failure(:unauthorized) unless warden.authenticated?
-
+          warden.authenticate!(:password)
           success(serializer)
         end
 

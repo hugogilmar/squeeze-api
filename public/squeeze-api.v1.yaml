@@ -1,0 +1,918 @@
+openapi: 3.0.0
+info:
+  title: Squeeze API
+  version: '1.0'
+  description: Squeeze App API OpenAPI v3 documentation
+  contact:
+    name: Squeeze Team
+    email: hugo@squeeze.app
+    url: 'https://squeeze.app'
+  license:
+    name: MIT
+  termsOfService: 'https://squeeze.app/terms'
+servers:
+  - url: 'http://squeeze.lvh.me'
+    description: Development
+  - url: 'https://floating-brook-34623.herokuapp.com'
+    description: Staging
+  - url: 'https://api.squeeze.app'
+    description: Production
+paths:
+  /v1/users:
+    post:
+      summary: User registration
+      tags:
+        - Users
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/User'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableError'
+      operationId: post-v1-users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                 $ref: '#/components/schemas/CreateUser'
+  /v1/user:
+    put:
+      summary: User profile update
+      operationId: put-v1-user
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/User'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  $ref: '#/components/schemas/UpdateUser'
+      security:
+        - Authentication token: []
+      tags:
+        - Users
+    patch:
+      summary: User profile update
+      operationId: patch-v1-user
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableError'
+      description: Allow user profile update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  $ref: '#/components/schemas/UpdateUser'
+      tags:
+        - Users
+      security:
+        - Authentication token: []
+  /v1/authentication:
+    post:
+      summary: Users authentication
+      operationId: post-v1-authentication
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/AuthenticationToken'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableError'
+      tags:
+        - Authentication
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  $ref: '#/components/schemas/UserCredentials'
+  /v1/accounts:
+    get:
+      summary: User accounts search
+      tags:
+        - Accounts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Account'
+                  meta:
+                    $ref: '#/components/schemas/Metadata'
+                required:
+                  - data
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+      operationId: get-v1-accounts
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: page
+        - schema:
+            type: number
+          in: query
+          name: per_page
+      security:
+        - Authentication token: []
+    parameters: []
+    post:
+      summary: User account create
+      operationId: post-v1-accounts
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Account'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/GeneralError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableError'
+      security:
+        - Authentication token: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  $ref: '#/components/schemas/StoreAccount'
+      tags:
+        - Accounts
+  '/v1/accounts/{id}':
+    parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+    get:
+      summary: User account find
+      tags:
+        - Accounts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Account'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+      operationId: get-v1-accounts-member
+      security:
+        - Authentication token: []
+    put:
+      summary: User account update
+      operationId: put-v1-accounts-member
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Account'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableError'
+      security:
+        - Authentication token: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  $ref: '#/components/schemas/StoreAccount'
+      tags:
+        - Accounts
+    patch:
+      summary: User account update
+      operationId: patch-v1-accounts-member
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Account'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableError'
+      security:
+        - Authentication token: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  $ref: '#/components/schemas/StoreAccount'
+      tags:
+        - Accounts
+    delete:
+      summary: User account delete
+      operationId: delete-v1-accounts-member
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+      security:
+        - Authentication token: []
+      tags:
+        - Accounts
+  /v1/budgets:
+    get:
+      summary: User budgets search
+      tags:
+        - Budgets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Budget'
+                  meta:
+                    $ref: '#/components/schemas/Metadata'
+                required:
+                  - data
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+      operationId: get-v1-budgets
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: page
+        - schema:
+            type: number
+          in: query
+          name: per_page
+      security:
+        - Authentication token: []
+    parameters: []
+    post:
+      summary: User budget create
+      operationId: post-v1-budgets
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Budget'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/GeneralError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableError'
+      security:
+        - Authentication token: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  $ref: '#/components/schemas/StoreBudget'
+      tags:
+        - Budgets
+  '/v1/budgets/{id}':
+    parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+    get:
+      summary: User budget find
+      tags:
+        - Budgets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Budget'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+      operationId: get-v1-budgets-member
+      security:
+        - Authentication token: []
+    put:
+      summary: User budget update
+      operationId: put-v1-budgets-member
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Budget'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableError'
+      security:
+        - Authentication token: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  $ref: '#/components/schemas/StoreBudget'
+      tags:
+        - Budgets
+    patch:
+      summary: User budget update
+      operationId: patch-v1-budgets-member
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Budget'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableError'
+      security:
+        - Authentication token: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  $ref: '#/components/schemas/StoreBudget'
+      tags:
+        - Budgets
+    delete:
+      summary: User budget delete
+      operationId: delete-v1-budgets-member
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+      security:
+        - Authentication token: []
+      tags:
+        - Budgets
+components:
+  securitySchemes:
+    Authentication token:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        Users authentication endpoint will provide a JWT for authorization.
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        uuid:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        profile:
+          $ref: '#/components/schemas/Profile'
+      required:
+        - id
+        - uuid
+        - email
+        - created_at
+        - updated_at
+        - profile
+    Profile:
+      type: object
+      properties:
+        id:
+          type: integer
+        uuid:
+          type: string
+          format: uuid
+        first_name:
+          type: string
+        last_name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      required:
+        - id
+        - uuid
+        - first_name
+        - last_name
+        - created_at
+        - updated_at
+    CreateUser:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          format: password
+        password_confirmation:
+          type: string
+          format: password
+        profile:
+          $ref: '#/components/schemas/CreateProfile'
+      required:
+        - email
+        - password
+        - password_confirmation
+        - profile
+    CreateProfile:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+      required:
+        - first_name
+        - last_name
+    UpdateUser:
+      type: object
+      properties:
+        profile:
+          $ref: '#/components/schemas/UpdateProfile'
+      required:
+        - profile
+    UpdateProfile:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+      required:
+        - first_name
+        - last_name
+    Account:
+      type: object
+      properties:
+        id:
+          type: number
+        uuid:
+          type: string
+          format: uuid
+        description:
+          type: string
+        reference_number:
+          type: string
+        kind:
+          type: string
+          enum:
+            - bank_account
+            - cash
+            - credit_card
+            - debit_card
+        created_at:
+          type: string
+        updated_at:
+          type: string
+      required:
+        - id
+        - uuid
+        - description
+        - reference_number
+        - kind
+        - created_at
+        - updated_at
+    StoreAccount:
+      type: object
+      properties:
+        description:
+          type: string
+        kind:
+          type: string
+        reference_number:
+          type: string
+      required:
+        - description
+        - kind
+        - reference_number
+    Budget:
+      type: object
+      properties:
+        id:
+          type: number
+        uuid:
+          type: string
+          format: uuid
+        description:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+      required:
+        - id
+        - uuid
+        - description
+        - created_at
+        - updated_at
+    StoreBudget:
+      type: object
+      properties:
+        description:
+          type: string
+      required:
+        - description
+    AuthenticationToken:
+      type: object
+      properties:
+        authentication_token:
+          type: string
+        expires_at:
+          type: string
+          format: date-time
+      required:
+        - authentication_token
+        - expires_at
+    UserCredentials:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          format: password
+      required:
+        - email
+        - password
+    Metadata:
+      type: object
+      properties:
+        total_count:
+          type: number
+        total_pages:
+          type: number
+        current_page:
+          type: number
+        next_page:
+          type: number
+        prev_page:
+          type: number
+      required:
+        - total_count
+        - total_pages
+        - current_page
+        - next_page
+        - prev_page
+    GeneralError:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+    UnprocessableError:
+      type: object
+      properties:
+        error:
+          type: string
+        detail:
+          type: object
+      required:
+        - error
+        - detail
+tags:
+  - name: Authentication
+    description: Users authentication
+  - name: Users
+    description: Users registration and profile update
+  - name: Accounts
+    description: User accounts management
+  - name: Budgets
+    description: User budgets management 

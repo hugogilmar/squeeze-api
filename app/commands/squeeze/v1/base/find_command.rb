@@ -9,8 +9,6 @@ module Squeeze
 
         # Command execution
         def call
-          return failure(:bad_request) if model.nil?
-
           success(serializer)
         end
 

@@ -11,9 +11,6 @@ module Squeeze
         # Command execution
         def call(params)
           @params = params || {}
-
-          return failure(:bad_request) if models.nil?
-
           success(serializer)
         end
 

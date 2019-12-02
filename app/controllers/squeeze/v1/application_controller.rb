@@ -16,6 +16,10 @@ module Squeeze
         render json: { error: e.message.capitalize, detail: e.record.errors }, status: 422
       end
 
+      rescue_from ActiveRecord::RecordNotDestroyed do |e|
+        render json: { error: e.message.capitalize, detail: e.record.errors }, status: 422
+      end
+
       rescue_from ActiveRecord::RecordNotFound do |_e|
         render json: { error: 'Could not find resource with provided id' }, status: 404
       end

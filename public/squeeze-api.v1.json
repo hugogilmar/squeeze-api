@@ -44,80 +44,9 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "title": "User",
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "integer"
-                        },
-                        "uuid": {
-                          "type": "string",
-                          "format": "uuid"
-                        },
-                        "email": {
-                          "type": "string",
-                          "format": "email"
-                        },
-                        "created_at": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "updated_at": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "profile": {
-                          "title": "Profile",
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "integer"
-                            },
-                            "uuid": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "first_name": {
-                              "type": "string"
-                            },
-                            "last_name": {
-                              "type": "string"
-                            },
-                            "created_at": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "updated_at": {
-                              "type": "string",
-                              "format": "date-time"
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "uuid",
-                            "first_name",
-                            "last_name",
-                            "created_at",
-                            "updated_at"
-                          ]
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "uuid",
-                        "email",
-                        "created_at",
-                        "updated_at",
-                        "profile"
-                      ]
+                      "$ref": "#/components/schemas/User"
                     }
                   }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object",
-                  "properties": {}
                 }
               }
             }
@@ -127,17 +56,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
+                  "$ref": "#/components/schemas/GeneralError"
                 }
               }
             }
@@ -147,21 +66,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "UnprocessableError",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    },
-                    "detail": {
-                      "type": "object"
-                    }
-                  },
-                  "required": [
-                    "error",
-                    "detail"
-                  ]
+                  "$ref": "#/components/schemas/UnprocessableError"
                 }
               }
             }
@@ -175,52 +80,13 @@
                 "type": "object",
                 "properties": {
                   "data": {
-                    "title": "CreateUser",
-                    "type": "object",
-                    "properties": {
-                      "email": {
-                        "type": "string",
-                        "format": "email"
-                      },
-                      "password": {
-                        "type": "string",
-                        "format": "password"
-                      },
-                      "password_confirmation": {
-                        "type": "string",
-                        "format": "password"
-                      },
-                      "profile": {
-                        "title": "CreateProfile",
-                        "type": "object",
-                        "properties": {
-                          "first_name": {
-                            "type": "string"
-                          },
-                          "last_name": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "first_name",
-                          "last_name"
-                        ]
-                      }
-                    },
-                    "required": [
-                      "email",
-                      "password",
-                      "password_confirmation",
-                      "profile"
-                    ]
+                    "$ref": "#/components/schemas/CreateUser"
                   }
                 }
               }
             }
-          },
-          "description": "User registration JSON request structure"
-        },
-        "description": "User registration with nested profile"
+          }
+        }
       }
     },
     "/v1/user": {
@@ -233,76 +99,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "User",
                   "type": "object",
                   "properties": {
                     "data": {
-                      "title": "User",
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "integer"
-                        },
-                        "uuid": {
-                          "type": "string",
-                          "format": "uuid"
-                        },
-                        "email": {
-                          "type": "string",
-                          "format": "email"
-                        },
-                        "created_at": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "updated_at": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "profile": {
-                          "title": "Profile",
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "integer"
-                            },
-                            "uuid": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "first_name": {
-                              "type": "string"
-                            },
-                            "last_name": {
-                              "type": "string"
-                            },
-                            "created_at": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "updated_at": {
-                              "type": "string",
-                              "format": "date-time"
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "uuid",
-                            "first_name",
-                            "last_name",
-                            "created_at",
-                            "updated_at"
-                          ]
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "uuid",
-                        "email",
-                        "created_at",
-                        "updated_at",
-                        "profile"
-                      ]
+                      "$ref": "#/components/schemas/User"
                     }
                   }
                 }
@@ -314,17 +114,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
+                  "$ref": "#/components/schemas/GeneralError"
                 }
               }
             }
@@ -334,17 +124,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
+                  "$ref": "#/components/schemas/GeneralError"
                 }
               }
             }
@@ -354,65 +134,25 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "UnprocessableError",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    },
-                    "detail": {
-                      "type": "object"
-                    }
-                  },
-                  "required": [
-                    "error",
-                    "detail"
-                  ]
+                  "$ref": "#/components/schemas/UnprocessableError"
                 }
               }
             }
           }
         },
-        "description": "User profile update",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "title": "UpdateProfile",
                 "type": "object",
-                "description": "",
                 "properties": {
                   "data": {
-                    "title": "UpdateUser",
-                    "type": "object",
-                    "properties": {
-                      "profile": {
-                        "title": "UpdateProfile",
-                        "type": "object",
-                        "properties": {
-                          "first_name": {
-                            "type": "string"
-                          },
-                          "last_name": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "first_name",
-                          "last_name"
-                        ]
-                      }
-                    },
-                    "required": [
-                      "profile"
-                    ]
+                    "$ref": "#/components/schemas/UpdateUser"
                   }
                 }
               }
             }
-          },
-          "description": "User profile update JSON request structure"
+          }
         },
         "security": [
           {
@@ -432,78 +172,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "User",
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "title": "User",
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "integer"
-                        },
-                        "uuid": {
-                          "type": "string",
-                          "format": "uuid"
-                        },
-                        "email": {
-                          "type": "string",
-                          "format": "email"
-                        },
-                        "created_at": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "updated_at": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "profile": {
-                          "title": "Profile",
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "integer"
-                            },
-                            "uuid": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "first_name": {
-                              "type": "string"
-                            },
-                            "last_name": {
-                              "type": "string"
-                            },
-                            "created_at": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "updated_at": {
-                              "type": "string",
-                              "format": "date-time"
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "uuid",
-                            "first_name",
-                            "last_name",
-                            "created_at",
-                            "updated_at"
-                          ]
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "uuid",
-                        "email",
-                        "created_at",
-                        "updated_at",
-                        "profile"
-                      ]
-                    }
-                  }
+                  "$ref": "#/components/schemas/User"
                 }
               }
             }
@@ -513,17 +182,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
+                  "$ref": "#/components/schemas/GeneralError"
                 }
               }
             }
@@ -533,17 +192,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
+                  "$ref": "#/components/schemas/GeneralError"
                 }
               }
             }
@@ -553,21 +202,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "UnprocessableError",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    },
-                    "detail": {
-                      "type": "object"
-                    }
-                  },
-                  "required": [
-                    "error",
-                    "detail"
-                  ]
+                  "$ref": "#/components/schemas/UnprocessableError"
                 }
               }
             }
@@ -578,40 +213,15 @@
           "content": {
             "application/json": {
               "schema": {
-                "title": "UpdateProfile",
                 "type": "object",
-                "description": "",
                 "properties": {
                   "data": {
-                    "title": "UpdateUser",
-                    "type": "object",
-                    "properties": {
-                      "profile": {
-                        "title": "UpdateProfile",
-                        "type": "object",
-                        "properties": {
-                          "first_name": {
-                            "type": "string"
-                          },
-                          "last_name": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "first_name",
-                          "last_name"
-                        ]
-                      }
-                    },
-                    "required": [
-                      "profile"
-                    ]
+                    "$ref": "#/components/schemas/UpdateUser"
                   }
                 }
               }
             }
-          },
-          "description": ""
+          }
         },
         "tags": [
           "Users"
@@ -633,25 +243,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "AuthenticationToken",
                   "type": "object",
                   "properties": {
                     "data": {
-                      "title": "AuthenticationToken",
-                      "type": "object",
-                      "properties": {
-                        "authentication_token": {
-                          "type": "string"
-                        },
-                        "expires_at": {
-                          "type": "string",
-                          "format": "date-time"
-                        }
-                      },
-                      "required": [
-                        "authentication_token",
-                        "expires_at"
-                      ]
+                      "$ref": "#/components/schemas/AuthenticationToken"
                     }
                   }
                 }
@@ -663,17 +258,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
+                  "$ref": "#/components/schemas/GeneralError"
                 }
               }
             }
@@ -683,17 +268,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
+                  "$ref": "#/components/schemas/GeneralError"
                 }
               }
             }
@@ -703,27 +278,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "UnprocessableError",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    },
-                    "detail": {
-                      "type": "object"
-                    }
-                  },
-                  "required": [
-                    "error",
-                    "detail"
-                  ]
+                  "$ref": "#/components/schemas/UnprocessableError"
                 }
               }
             }
           }
         },
-        "description": "Users authentication by email and password",
         "tags": [
           "Authentication"
         ],
@@ -731,63 +291,15 @@
           "content": {
             "application/json": {
               "schema": {
-                "title": "UserCredentials",
                 "type": "object",
-                "x-examples": {
-                  "example-1": {}
-                },
                 "properties": {
                   "data": {
-                    "title": "UserCredentials",
-                    "type": "object",
-                    "properties": {
-                      "email": {
-                        "type": "string",
-                        "format": "email"
-                      },
-                      "password": {
-                        "type": "string",
-                        "format": "password"
-                      }
-                    },
-                    "required": [
-                      "email",
-                      "password"
-                    ]
-                  }
-                }
-              }
-            },
-            "application/xml": {
-              "schema": {
-                "title": "UserCredentials",
-                "type": "object",
-                "x-examples": {
-                  "example-1": {}
-                },
-                "properties": {
-                  "data": {
-                    "type": "object",
-                    "properties": {
-                      "email": {
-                        "type": "string",
-                        "format": "email"
-                      },
-                      "password": {
-                        "type": "string",
-                        "format": "password"
-                      }
-                    },
-                    "required": [
-                      "email",
-                      "password"
-                    ]
+                    "$ref": "#/components/schemas/UserCredentials"
                   }
                 }
               }
             }
-          },
-          "description": ""
+          }
         }
       }
     },
@@ -808,76 +320,11 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "title": "Account",
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "number"
-                          },
-                          "uud": {
-                            "type": "string",
-                            "format": "uuid"
-                          },
-                          "description": {
-                            "type": "string"
-                          },
-                          "reference_number": {
-                            "type": "string"
-                          },
-                          "created_at": {
-                            "type": "string"
-                          },
-                          "updated_at": {
-                            "type": "string"
-                          },
-                          "kind": {
-                            "type": "string",
-                            "enum": [
-                              "bank_account",
-                              "cash",
-                              "credit_card",
-                              "debit_card"
-                            ]
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "uud",
-                          "description",
-                          "reference_number",
-                          "created_at",
-                          "updated_at",
-                          "kind"
-                        ]
+                        "$ref": "#/components/schemas/Account"
                       }
                     },
                     "meta": {
-                      "title": "Metadata",
-                      "type": "object",
-                      "properties": {
-                        "total_count": {
-                          "type": "number"
-                        },
-                        "total_pages": {
-                          "type": "number"
-                        },
-                        "current_page": {
-                          "type": "number"
-                        },
-                        "next_page": {
-                          "type": "number"
-                        },
-                        "prev_page": {
-                          "type": "number"
-                        }
-                      },
-                      "required": [
-                        "total_count",
-                        "total_pages",
-                        "current_page",
-                        "next_page",
-                        "prev_page"
-                      ]
+                      "$ref": "#/components/schemas/Metadata"
                     }
                   },
                   "required": [
@@ -892,32 +339,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
+                  "$ref": "#/components/schemas/GeneralError"
                 }
               }
             }
           }
         },
         "operationId": "get-v1-accounts",
-        "description": "User accounts search",
         "parameters": [
           {
             "schema": {
               "type": "number"
             },
             "in": "query",
-            "name": "page",
-            "description": ""
+            "name": "page"
           },
           {
             "schema": {
@@ -935,7 +370,7 @@
       },
       "parameters": [],
       "post": {
-        "summary": "Create user account",
+        "summary": "User account create",
         "operationId": "post-v1-accounts",
         "responses": {
           "201": {
@@ -946,47 +381,7 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "title": "Account",
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "number"
-                        },
-                        "uud": {
-                          "type": "string",
-                          "format": "uuid"
-                        },
-                        "description": {
-                          "type": "string"
-                        },
-                        "reference_number": {
-                          "type": "string"
-                        },
-                        "created_at": {
-                          "type": "string"
-                        },
-                        "updated_at": {
-                          "type": "string"
-                        },
-                        "kind": {
-                          "type": "string",
-                          "enum": [
-                            "bank_account",
-                            "cash",
-                            "credit_card",
-                            "debit_card"
-                          ]
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "uud",
-                        "description",
-                        "reference_number",
-                        "created_at",
-                        "updated_at",
-                        "kind"
-                      ]
+                      "$ref": "#/components/schemas/Account"
                     }
                   }
                 }
@@ -998,17 +393,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
+                  "$ref": "#/components/schemas/GeneralError"
                 }
               }
             }
@@ -1018,17 +403,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
+                  "$ref": "#/components/schemas/GeneralError"
                 }
               }
             }
@@ -1038,17 +413,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
+                  "$ref": "#/components/schemas/GeneralError"
                 }
               }
             }
@@ -1058,27 +423,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "UnprocessableError",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    },
-                    "detail": {
-                      "type": "object"
-                    }
-                  },
-                  "required": [
-                    "error",
-                    "detail"
-                  ]
+                  "$ref": "#/components/schemas/UnprocessableError"
                 }
               }
             }
           }
         },
-        "description": "Create user account",
         "security": [
           {
             "Authentication token": []
@@ -1091,24 +441,7 @@
                 "type": "object",
                 "properties": {
                   "data": {
-                    "title": "StoreAccount",
-                    "type": "object",
-                    "properties": {
-                      "description": {
-                        "type": "string"
-                      },
-                      "kind": {
-                        "type": "string"
-                      },
-                      "reference_number": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "description",
-                      "kind",
-                      "reference_number"
-                    ]
+                    "$ref": "#/components/schemas/StoreAccount"
                   }
                 }
               }
@@ -1123,7 +456,6 @@
     "/v1/accounts/{id}": {
       "parameters": [
         {
-          "type": "string",
           "name": "id",
           "in": "path",
           "schema": {
@@ -1146,47 +478,7 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "title": "Account",
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "number"
-                        },
-                        "uud": {
-                          "type": "string",
-                          "format": "uuid"
-                        },
-                        "description": {
-                          "type": "string"
-                        },
-                        "reference_number": {
-                          "type": "string"
-                        },
-                        "created_at": {
-                          "type": "string"
-                        },
-                        "updated_at": {
-                          "type": "string"
-                        },
-                        "kind": {
-                          "type": "string",
-                          "enum": [
-                            "bank_account",
-                            "cash",
-                            "credit_card",
-                            "debit_card"
-                          ]
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "uud",
-                        "description",
-                        "reference_number",
-                        "created_at",
-                        "updated_at",
-                        "kind"
-                      ]
+                      "$ref": "#/components/schemas/Account"
                     }
                   }
                 }
@@ -1198,17 +490,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
+                  "$ref": "#/components/schemas/GeneralError"
                 }
               }
             }
@@ -1218,24 +500,13 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
+                  "$ref": "#/components/schemas/GeneralError"
                 }
               }
             }
           }
         },
         "operationId": "get-v1-accounts-member",
-        "description": "User account find",
         "security": [
           {
             "Authentication token": []
@@ -1254,47 +525,7 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "title": "Account",
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "number"
-                        },
-                        "uud": {
-                          "type": "string",
-                          "format": "uuid"
-                        },
-                        "description": {
-                          "type": "string"
-                        },
-                        "reference_number": {
-                          "type": "string"
-                        },
-                        "created_at": {
-                          "type": "string"
-                        },
-                        "updated_at": {
-                          "type": "string"
-                        },
-                        "kind": {
-                          "type": "string",
-                          "enum": [
-                            "bank_account",
-                            "cash",
-                            "credit_card",
-                            "debit_card"
-                          ]
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "uud",
-                        "description",
-                        "reference_number",
-                        "created_at",
-                        "updated_at",
-                        "kind"
-                      ]
+                      "$ref": "#/components/schemas/Account"
                     }
                   }
                 }
@@ -1306,17 +537,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
+                  "$ref": "#/components/schemas/GeneralError"
                 }
               }
             }
@@ -1326,17 +547,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
+                  "$ref": "#/components/schemas/GeneralError"
                 }
               }
             }
@@ -1346,17 +557,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
+                  "$ref": "#/components/schemas/GeneralError"
                 }
               }
             }
@@ -1366,21 +567,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "UnprocessableError",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    },
-                    "detail": {
-                      "type": "object"
-                    }
-                  },
-                  "required": [
-                    "error",
-                    "detail"
-                  ]
+                  "$ref": "#/components/schemas/UnprocessableError"
                 }
               }
             }
@@ -1398,24 +585,7 @@
                 "type": "object",
                 "properties": {
                   "data": {
-                    "title": "StoreAccount",
-                    "type": "object",
-                    "properties": {
-                      "description": {
-                        "type": "string"
-                      },
-                      "kind": {
-                        "type": "string"
-                      },
-                      "reference_number": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "description",
-                      "kind",
-                      "reference_number"
-                    ]
+                    "$ref": "#/components/schemas/StoreAccount"
                   }
                 }
               }
@@ -1424,8 +594,7 @@
         },
         "tags": [
           "Accounts"
-        ],
-        "description": "User account update"
+        ]
       },
       "patch": {
         "summary": "User account update",
@@ -1439,47 +608,7 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "title": "Account",
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "number"
-                        },
-                        "uud": {
-                          "type": "string",
-                          "format": "uuid"
-                        },
-                        "description": {
-                          "type": "string"
-                        },
-                        "reference_number": {
-                          "type": "string"
-                        },
-                        "created_at": {
-                          "type": "string"
-                        },
-                        "updated_at": {
-                          "type": "string"
-                        },
-                        "kind": {
-                          "type": "string",
-                          "enum": [
-                            "bank_account",
-                            "cash",
-                            "credit_card",
-                            "debit_card"
-                          ]
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "uud",
-                        "description",
-                        "reference_number",
-                        "created_at",
-                        "updated_at",
-                        "kind"
-                      ]
+                      "$ref": "#/components/schemas/Account"
                     }
                   }
                 }
@@ -1491,17 +620,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
+                  "$ref": "#/components/schemas/GeneralError"
                 }
               }
             }
@@ -1511,17 +630,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
+                  "$ref": "#/components/schemas/GeneralError"
                 }
               }
             }
@@ -1531,17 +640,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
+                  "$ref": "#/components/schemas/GeneralError"
                 }
               }
             }
@@ -1551,21 +650,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "UnprocessableError",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    },
-                    "detail": {
-                      "type": "object"
-                    }
-                  },
-                  "required": [
-                    "error",
-                    "detail"
-                  ]
+                  "$ref": "#/components/schemas/UnprocessableError"
                 }
               }
             }
@@ -1583,31 +668,13 @@
                 "type": "object",
                 "properties": {
                   "data": {
-                    "title": "StoreAccount",
-                    "type": "object",
-                    "properties": {
-                      "description": {
-                        "type": "string"
-                      },
-                      "kind": {
-                        "type": "string"
-                      },
-                      "reference_number": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "description",
-                      "kind",
-                      "reference_number"
-                    ]
+                    "$ref": "#/components/schemas/StoreAccount"
                   }
                 }
               }
             }
           }
         },
-        "description": "User account update",
         "tags": [
           "Accounts"
         ]
@@ -1624,17 +691,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
+                  "$ref": "#/components/schemas/GeneralError"
                 }
               }
             }
@@ -1644,17 +701,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "General Error",
-                  "type": "object",
-                  "description": "",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ]
+                  "$ref": "#/components/schemas/GeneralError"
                 }
               }
             }
@@ -1665,9 +712,422 @@
             "Authentication token": []
           }
         ],
-        "description": "User account delete",
         "tags": [
           "Accounts"
+        ]
+      }
+    },
+    "/v1/budgets": {
+      "get": {
+        "summary": "User budgets search",
+        "tags": [
+          "Budgets"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Budget"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Metadata"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-v1-budgets",
+        "parameters": [
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "page"
+          },
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "per_page"
+          }
+        ],
+        "security": [
+          {
+            "Authentication token": []
+          }
+        ]
+      },
+      "parameters": [],
+      "post": {
+        "summary": "User budget create",
+        "operationId": "post-v1-budgets",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Budget"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneralError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneralError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Authentication token": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/StoreBudget"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Budgets"
+        ]
+      }
+    },
+    "/v1/budgets/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          },
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "User budget find",
+        "tags": [
+          "Budgets"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Budget"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-v1-budgets-member",
+        "security": [
+          {
+            "Authentication token": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "User budget update",
+        "operationId": "put-v1-budgets-member",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Budget"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneralError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneralError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Authentication token": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/StoreBudget"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Budgets"
+        ]
+      },
+      "patch": {
+        "summary": "User budget update",
+        "operationId": "patch-v1-budgets-member",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Budget"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneralError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneralError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Authentication token": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/StoreBudget"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Budgets"
+        ]
+      },
+      "delete": {
+        "summary": "User budget delete",
+        "operationId": "delete-v1-budgets-member",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Authentication token": []
+          }
+        ],
+        "tags": [
+          "Budgets"
         ]
       }
     }
@@ -1678,12 +1138,11 @@
         "type": "apiKey",
         "in": "header",
         "name": "Authorization",
-        "description": "Users authentication endpoint will provide a JWT for authorization. Expiration time is 24 hours after generation."
+        "description": "Users authentication endpoint will provide a JWT for authorization."
       }
     },
     "schemas": {
       "User": {
-        "title": "User",
         "type": "object",
         "properties": {
           "id": {
@@ -1706,39 +1165,7 @@
             "format": "date-time"
           },
           "profile": {
-            "title": "Profile",
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "integer"
-              },
-              "uuid": {
-                "type": "string",
-                "format": "uuid"
-              },
-              "first_name": {
-                "type": "string"
-              },
-              "last_name": {
-                "type": "string"
-              },
-              "created_at": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "updated_at": {
-                "type": "string",
-                "format": "date-time"
-              }
-            },
-            "required": [
-              "id",
-              "uuid",
-              "first_name",
-              "last_name",
-              "created_at",
-              "updated_at"
-            ]
+            "$ref": "#/components/schemas/Profile"
           }
         },
         "required": [
@@ -1751,7 +1178,6 @@
         ]
       },
       "Profile": {
-        "title": "Profile",
         "type": "object",
         "properties": {
           "id": {
@@ -1786,7 +1212,6 @@
         ]
       },
       "CreateUser": {
-        "title": "CreateUser",
         "type": "object",
         "properties": {
           "email": {
@@ -1802,20 +1227,7 @@
             "format": "password"
           },
           "profile": {
-            "title": "CreateProfile",
-            "type": "object",
-            "properties": {
-              "first_name": {
-                "type": "string"
-              },
-              "last_name": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "first_name",
-              "last_name"
-            ]
+            "$ref": "#/components/schemas/CreateProfile"
           }
         },
         "required": [
@@ -1826,7 +1238,6 @@
         ]
       },
       "CreateProfile": {
-        "title": "CreateProfile",
         "type": "object",
         "properties": {
           "first_name": {
@@ -1841,38 +1252,18 @@
           "last_name"
         ]
       },
-      "GeneralError": {
-        "title": "General Error",
+      "UpdateUser": {
         "type": "object",
-        "description": "",
         "properties": {
-          "error": {
-            "type": "string"
+          "profile": {
+            "$ref": "#/components/schemas/UpdateProfile"
           }
         },
         "required": [
-          "error"
-        ]
-      },
-      "UnprocessableError": {
-        "title": "UnprocessableError",
-        "type": "object",
-        "description": "",
-        "properties": {
-          "error": {
-            "type": "string"
-          },
-          "detail": {
-            "type": "object"
-          }
-        },
-        "required": [
-          "error",
-          "detail"
+          "profile"
         ]
       },
       "UpdateProfile": {
-        "title": "UpdateProfile",
         "type": "object",
         "properties": {
           "first_name": {
@@ -1888,13 +1279,12 @@
         ]
       },
       "Account": {
-        "title": "Account",
         "type": "object",
         "properties": {
           "id": {
             "type": "number"
           },
-          "uud": {
+          "uuid": {
             "type": "string",
             "format": "uuid"
           },
@@ -1902,12 +1292,6 @@
             "type": "string"
           },
           "reference_number": {
-            "type": "string"
-          },
-          "created_at": {
-            "type": "string"
-          },
-          "updated_at": {
             "type": "string"
           },
           "kind": {
@@ -1918,20 +1302,83 @@
               "credit_card",
               "debit_card"
             ]
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
           }
         },
         "required": [
           "id",
-          "uud",
+          "uuid",
           "description",
           "reference_number",
+          "kind",
           "created_at",
-          "updated_at",
-          "kind"
+          "updated_at"
+        ]
+      },
+      "StoreAccount": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "reference_number": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "description",
+          "kind",
+          "reference_number"
+        ]
+      },
+      "Budget": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "uuid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "uuid",
+          "description",
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "StoreBudget": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "description"
         ]
       },
       "AuthenticationToken": {
-        "title": "AuthenticationToken",
         "type": "object",
         "properties": {
           "authentication_token": {
@@ -1948,7 +1395,6 @@
         ]
       },
       "UserCredentials": {
-        "title": "UserCredentials",
         "type": "object",
         "properties": {
           "email": {
@@ -1966,7 +1412,6 @@
         ]
       },
       "Metadata": {
-        "title": "Metadata",
         "type": "object",
         "properties": {
           "total_count": {
@@ -1993,49 +1438,30 @@
           "prev_page"
         ]
       },
-      "StoreAccount": {
-        "title": "StoreAccount",
+      "GeneralError": {
         "type": "object",
         "properties": {
-          "description": {
-            "type": "string"
-          },
-          "kind": {
-            "type": "string"
-          },
-          "reference_number": {
+          "error": {
             "type": "string"
           }
         },
         "required": [
-          "description",
-          "kind",
-          "reference_number"
+          "error"
         ]
       },
-      "UpdateUser": {
-        "title": "UpdateUser",
+      "UnprocessableError": {
         "type": "object",
         "properties": {
-          "profile": {
-            "title": "UpdateProfile",
-            "type": "object",
-            "properties": {
-              "first_name": {
-                "type": "string"
-              },
-              "last_name": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "first_name",
-              "last_name"
-            ]
+          "error": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object"
           }
         },
         "required": [
-          "profile"
+          "error",
+          "detail"
         ]
       }
     }
@@ -2052,6 +1478,10 @@
     {
       "name": "Accounts",
       "description": "User accounts management"
+    },
+    {
+      "name": "Budgets",
+      "description": "User budgets management"
     }
   ]
 }

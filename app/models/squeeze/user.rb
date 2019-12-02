@@ -7,6 +7,7 @@ module Squeeze
 
     has_one :profile, dependent: :destroy
     has_many :accounts, dependent: :destroy
+    has_many :budgets, dependent: :destroy
 
     accepts_nested_attributes_for :profile
   end

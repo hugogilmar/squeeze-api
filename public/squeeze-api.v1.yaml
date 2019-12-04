@@ -671,6 +671,261 @@ paths:
         - Authentication token: []
       tags:
         - Budgets
+  '/v1/budgets/{budget_id}/categories':
+    parameters:
+      - name: budget_id
+        in: path
+        schema:
+          type: integer
+        required: true
+    get:
+      summary: User budget categories search
+      tags:
+        - Categories
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Category'
+                  meta:
+                    $ref: '#/components/schemas/Metadata'
+                required:
+                  - data
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+      operationId: get-v1-budget-categories
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: page
+        - schema:
+            type: number
+          in: query
+          name: per_page
+      security:
+        - Authentication token: []
+    post:
+      summary: User budget category create
+      operationId: post-v1-budget-categories
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Category'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/GeneralError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableError'
+      security:
+        - Authentication token: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  $ref: '#/components/schemas/StoreCategory'
+      tags:
+        - Categories
+  '/v1/budgets/{budget_id}/categories/{id}':
+    parameters:
+      - name: budget_id
+        in: path
+        schema:
+          type: integer
+        required: true
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+    get:
+      summary: User budget category find
+      tags:
+        - Categories
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Category'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+      operationId: get-v1-budget-categories-member
+      security:
+        - Authentication token: []
+    put:
+      summary: User budget category update
+      operationId: put-v1-budget-categories-member
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Category'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableError'
+      security:
+        - Authentication token: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  $ref: '#/components/schemas/StoreCategory'
+      tags:
+        - Categories
+    patch:
+      summary: User budget category update
+      operationId: patch-v1-budget-categories-member
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Category'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableError'
+      security:
+        - Authentication token: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  $ref: '#/components/schemas/StoreCategory'
+      tags:
+        - Categories
+    delete:
+      summary: User budget category delete
+      operationId: delete-v1-budget-categories-member
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+      security:
+        - Authentication token: []
+      tags:
+        - Categories
 components:
   securitySchemes:
     Authentication token:
@@ -848,6 +1103,39 @@ components:
           type: string
       required:
         - description
+    Category:
+      type: object
+      properties:
+        id:
+          type: number
+        uuid:
+          type: string
+          format: uuid
+        description:
+          type: string
+        amount:
+          type: number
+        created_at:
+          type: string
+        updated_at:
+          type: string
+      required:
+        - id
+        - uuid
+        - description
+        - amount
+        - created_at
+        - updated_at
+    StoreCategory:
+      type: object
+      properties:
+        description:
+          type: string
+        amount:
+          type: number
+      required:
+        - description
+        - amount
     AuthenticationToken:
       type: object
       properties:
@@ -915,4 +1203,6 @@ tags:
   - name: Accounts
     description: User accounts management
   - name: Budgets
-    description: User budgets management 
+    description: User budgets management
+  - name: Categories
+    description: User budget categories management

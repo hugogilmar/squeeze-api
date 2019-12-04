@@ -2,14 +2,19 @@
 
 module Squeeze
   module V1
-    module Budgets
-      # Create budgets command
-      class CreateCommand < Base::CreateCommand
+    module Categories
+      # Create categories command
+      class CreateCommand < Base::Nested::CreateCommand
         private
 
         # Model builder
         def model
-          @model ||= current_user.budgets.new
+          @model ||= parent_model.categories.new
+        end
+
+        # Parent model builder
+        def parent_model
+          @parent_model ||= current_user.budgets.find(parent_resource_id)
         end
 
         # Form class used for params validation
@@ -19,7 +24,7 @@ module Squeeze
 
         # Serializer class used for json serialization
         def serializer_class
-          BudgetSerializer
+          CategorySerializer
         end
       end
     end

@@ -7,7 +7,7 @@ module Squeeze
       class CreateCommand < Base::CreateCommand
         private
 
-        # Model builder used for database persistance
+        # Model builder
         def model
           @model ||= current_user.accounts.new
         end

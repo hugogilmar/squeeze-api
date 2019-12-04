@@ -762,7 +762,7 @@ paths:
               type: object
               properties:
                 data:
-                  $ref: '#/components/schemas/StoreBudget'
+                  $ref: '#/components/schemas/StoreCategory'
       tags:
         - Categories
   '/v1/budgets/{budget_id}/categories/{id}':
@@ -852,7 +852,7 @@ paths:
               type: object
               properties:
                 data:
-                  $ref: '#/components/schemas/StoreBudget'
+                  $ref: '#/components/schemas/StoreCategory'
       tags:
         - Categories
     patch:
@@ -901,7 +901,7 @@ paths:
               type: object
               properties:
                 data:
-                  $ref: '#/components/schemas/StoreBudget'
+                  $ref: '#/components/schemas/StoreCategory'
       tags:
         - Categories
     delete:
@@ -1135,6 +1135,7 @@ components:
           type: number
       required:
         - description
+        - amount
     AuthenticationToken:
       type: object
       properties:

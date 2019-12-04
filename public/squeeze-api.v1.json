@@ -1278,7 +1278,7 @@
                 "type": "object",
                 "properties": {
                   "data": {
-                    "$ref": "#/components/schemas/StoreBudget"
+                    "$ref": "#/components/schemas/StoreCategory"
                   }
                 }
               }
@@ -1430,7 +1430,7 @@
                 "type": "object",
                 "properties": {
                   "data": {
-                    "$ref": "#/components/schemas/StoreBudget"
+                    "$ref": "#/components/schemas/StoreCategory"
                   }
                 }
               }
@@ -1513,7 +1513,7 @@
                 "type": "object",
                 "properties": {
                   "data": {
-                    "$ref": "#/components/schemas/StoreBudget"
+                    "$ref": "#/components/schemas/StoreCategory"
                   }
                 }
               }
@@ -1852,7 +1852,8 @@
           }
         },
         "required": [
-          "description"
+          "description",
+          "amount"
         ]
       },
       "AuthenticationToken": {

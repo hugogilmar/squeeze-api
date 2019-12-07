@@ -9,6 +9,7 @@ module Squeeze
     has_many :accounts, dependent: :destroy
     has_many :budgets, dependent: :destroy
     has_many :categories, through: :budgets
+    has_many :incomes, through: :budgets
 
     accepts_nested_attributes_for :profile
   end

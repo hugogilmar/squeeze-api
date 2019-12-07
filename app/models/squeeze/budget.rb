@@ -5,5 +5,6 @@ module Squeeze
   class Budget < ApplicationRecord
     belongs_to :user
     has_many :categories, dependent: :destroy
+    has_many :incomes, dependent: :destroy
   end
 end

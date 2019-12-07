@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_04_221832) do
+ActiveRecord::Schema.define(version: 2019_12_07_095642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,23 @@ ActiveRecord::Schema.define(version: 2019_12_04_221832) do
     t.index ["uuid"], name: "index_squeeze_categories_on_uuid", unique: true
   end
 
+  create_table "squeeze_expenses", force: :cascade do |t|
+    t.bigint "budget_id"
+    t.bigint "category_id"
+    t.bigint "account_id"
+    t.string "uuid", null: false
+    t.string "description"
+    t.decimal "amount", precision: 10, scale: 2, default: "0.0", null: false
+    t.datetime "deleted_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_squeeze_expenses_on_account_id"
+    t.index ["budget_id"], name: "index_squeeze_expenses_on_budget_id"
+    t.index ["category_id"], name: "index_squeeze_expenses_on_category_id"
+    t.index ["deleted_at"], name: "index_squeeze_expenses_on_deleted_at"
+    t.index ["uuid"], name: "index_squeeze_expenses_on_uuid", unique: true
+  end
+
   create_table "squeeze_incomes", force: :cascade do |t|
     t.bigint "budget_id"
     t.bigint "category_id"
@@ -96,6 +113,9 @@ ActiveRecord::Schema.define(version: 2019_12_04_221832) do
   add_foreign_key "squeeze_accounts", "squeeze_users", column: "user_id"
   add_foreign_key "squeeze_budgets", "squeeze_users", column: "user_id"
   add_foreign_key "squeeze_categories", "squeeze_budgets", column: "budget_id"
+  add_foreign_key "squeeze_expenses", "squeeze_accounts", column: "account_id"
+  add_foreign_key "squeeze_expenses", "squeeze_budgets", column: "budget_id"
+  add_foreign_key "squeeze_expenses", "squeeze_categories", column: "category_id"
   add_foreign_key "squeeze_incomes", "squeeze_accounts", column: "account_id"
   add_foreign_key "squeeze_incomes", "squeeze_budgets", column: "budget_id"
   add_foreign_key "squeeze_incomes", "squeeze_categories", column: "category_id"

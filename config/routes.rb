@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :accounts
       resources :budgets do
         resources :categories
+        resources :incomes
       end
     end
   end

@@ -4,15 +4,10 @@ module Squeeze
   module V1
     module Categories
       # Find categories command
-      class FindCommand < Base::Nested::FindCommand
+      class FindCommand < Budgets::Nested::FindCommand
         # Model builder
         def model
           @model ||= parent_model.categories.find(resource_id)
-        end
-
-        # Parent model builder
-        def parent_model
-          @parent_model ||= current_user.budgets.find(parent_resource_id)
         end
 
         # Serializer class used for json serialization

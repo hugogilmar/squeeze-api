@@ -19,9 +19,9 @@ module Squeeze
             end
           end
 
-          def test_parent_model
+          def test_form_class
             assert_raises NotImplementedError do
-              @command.__send__(:parent_model)
+              @command.__send__(:form_class)
             end
           end
         end

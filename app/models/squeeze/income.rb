@@ -6,7 +6,7 @@ module Squeeze
     belongs_to :budget
     belongs_to :category
     belongs_to :account
-    has_one :operation, as: :operable, dependent: :destroy
+    has_one :operation, as: :operable, inverse_of: :operable, dependent: :destroy
 
     after_save :store_operation!
 

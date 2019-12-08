@@ -5,16 +5,14 @@ module Squeeze
     module Operations
       # Search operations command
       class SearchCommand < Base::Nested::SearchCommand
-        private
-
-        # Models builder
-        def models
-          @models ||= parent_model.operations.page(page).per(per_page)
+        # Models scope
+        def models_scope
+          :operations
         end
 
-        # Parent model builder
-        def parent_model
-          @parent_model ||= current_user.accounts.find(parent_resource_id)
+        # Parent scope
+        def parent_scope
+          :accounts
         end
 
         # Serializer class used for json serialization

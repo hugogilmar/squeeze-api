@@ -5,16 +5,14 @@ module Squeeze
     module Categories
       # Create categories command
       class CreateCommand < Base::Nested::CreateCommand
-        private
-
-        # Model builder
-        def model
-          @model ||= parent_model.categories.new
+        # Model scope
+        def model_scope
+          :categories
         end
 
-        # Parent model builder
-        def parent_model
-          @parent_model ||= current_user.budgets.find(parent_resource_id)
+        # Parent scope
+        def parent_scope
+          :budgets
         end
 
         # Form class used for params validation

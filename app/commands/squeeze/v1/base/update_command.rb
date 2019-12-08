@@ -4,8 +4,7 @@ module Squeeze
   module V1
     module Base
       # Update command base class
-      class UpdateCommand < CreateCommand
-        context current_user: nil, resource_id: nil
+      class UpdateCommand < PersistCommand
       end
     end
   end

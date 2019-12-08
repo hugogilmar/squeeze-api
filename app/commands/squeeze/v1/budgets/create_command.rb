@@ -5,11 +5,9 @@ module Squeeze
     module Budgets
       # Create budgets command
       class CreateCommand < Base::CreateCommand
-        private
-
-        # Model builder
-        def model
-          @model ||= current_user.budgets.new
+        # Model scope
+        def model_scope
+          :budgets
         end
 
         # Form class used for params validation

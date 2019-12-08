@@ -5,14 +5,12 @@ module Squeeze
     module Base
       module Nested
         # Delete nested command base class
-        class DeleteCommand < Base::DeleteCommand
-          context current_user: nil, parent_resource_id: nil, resource_id: nil
+        class DeleteCommand < MemberCommand
+          # Command execution
+          def call
+            model.destroy!
 
-          private
-
-          # Parent model builder
-          def parent_model
-            raise(NotImplementedError, 'parent model method not implemented')
+            success(model)
           end
         end
       end

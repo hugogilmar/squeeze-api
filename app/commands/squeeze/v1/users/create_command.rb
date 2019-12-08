@@ -5,8 +5,6 @@ module Squeeze
     module Users
       # Create users command
       class CreateCommand < Base::CreateCommand
-        private
-
         # Model builder
         def model
           @model ||= User.new

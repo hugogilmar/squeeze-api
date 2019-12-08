@@ -5,16 +5,14 @@ module Squeeze
     module Expenses
       # Update expenses command
       class UpdateCommand < Base::Nested::UpdateCommand
-        private
-
-        # Model builder
-        def model
-          @model ||= parent_model.expenses.find(resource_id)
+        # Model scope
+        def model_scope
+          :expenses
         end
 
-        # Parent model builder
-        def parent_model
-          @parent_model ||= current_user.budgets.find(parent_resource_id)
+        # Parent scope
+        def parent_scope
+          :budgets
         end
 
         # Form class used for params validation

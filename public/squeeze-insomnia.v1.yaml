@@ -1,6 +1,6 @@
 _type: export
 __export_format: 4
-__export_date: 2019-12-07T17:15:30.087Z
+__export_date: 2019-12-08T12:37:11.062Z
 __export_source: insomnia.desktop.app:v7.0.5
 resources:
   - _id: req_8ac1faec10ad4f3094ccb06c11267ce2
@@ -908,6 +908,54 @@ resources:
     settingStoreCookies: true
     url: "{{ baseUrl  }}/v1/budgets/1/expenses/2"
     _type: request
+  - _id: req_d46cd4a365d84da8972cdbd675cd3e8e
+    authentication: {}
+    body: {}
+    created: 1575804621270
+    description: ""
+    headers:
+      - description: ""
+        id: pair_0c2dbe1dc1304a8589247d8b6e7fb56e
+        name: Content-Type
+        value: application/json
+      - description: ""
+        id: pair_5cc22e0d97c44bac83dbfee63ec8caca
+        name: Authorization
+        value: "{{ authenticationToken  }}"
+    isPrivate: false
+    metaSortKey: -1575067640937
+    method: GET
+    modified: 1575804772785
+    name: Search
+    parameters:
+      - description: ""
+        disabled: false
+        id: pair_3ca7f1670c624bc4829d818c68b51249
+        name: per_page
+        value: "1"
+      - description: ""
+        id: pair_513ea11169f84a96afe6bfba2f0b1b26
+        name: page
+        value: "1"
+    parentId: fld_5165c37794654350b98c0b4cdccc0e0b
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ baseUrl  }}/v1/accounts/1/operations"
+    _type: request
+  - _id: fld_5165c37794654350b98c0b4cdccc0e0b
+    created: 1575804621258
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1574634377536.2188
+    modified: 1575804651463
+    name: Operations
+    parentId: wrk_6d1abdab0b764900a94bd921848c5357
+    _type: request_group
   - _id: req_d98f7c1738f54846aa5395e3a14ee165
     authentication: {}
     body:

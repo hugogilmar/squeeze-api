@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_07_095642) do
+ActiveRecord::Schema.define(version: 2019_12_07_155611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,21 @@ ActiveRecord::Schema.define(version: 2019_12_07_095642) do
     t.index ["uuid"], name: "index_squeeze_incomes_on_uuid", unique: true
   end
 
+  create_table "squeeze_operations", force: :cascade do |t|
+    t.bigint "account_id"
+    t.string "operable_type"
+    t.bigint "operable_id"
+    t.string "uuid", null: false
+    t.decimal "amount", precision: 10, scale: 2, default: "0.0", null: false
+    t.datetime "deleted_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_squeeze_operations_on_account_id"
+    t.index ["deleted_at"], name: "index_squeeze_operations_on_deleted_at"
+    t.index ["operable_type", "operable_id"], name: "index_squeeze_operation_on_operable_columns"
+    t.index ["uuid"], name: "index_squeeze_operations_on_uuid", unique: true
+  end
+
   create_table "squeeze_profiles", force: :cascade do |t|
     t.bigint "user_id"
     t.string "uuid", null: false
@@ -119,5 +134,6 @@ ActiveRecord::Schema.define(version: 2019_12_07_095642) do
   add_foreign_key "squeeze_incomes", "squeeze_accounts", column: "account_id"
   add_foreign_key "squeeze_incomes", "squeeze_budgets", column: "budget_id"
   add_foreign_key "squeeze_incomes", "squeeze_categories", column: "category_id"
+  add_foreign_key "squeeze_operations", "squeeze_accounts", column: "account_id"
   add_foreign_key "squeeze_profiles", "squeeze_users", column: "user_id"
 end

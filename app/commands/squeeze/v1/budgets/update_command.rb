@@ -5,9 +5,9 @@ module Squeeze
     module Budgets
       # Update budgets command
       class UpdateCommand < Base::UpdateCommand
-        # Model builder
-        def model
-          @model ||= current_user.budgets.find(resource_id)
+        # Model scope
+        def model_scope
+          :budgets
         end
 
         # Form class used for params validation

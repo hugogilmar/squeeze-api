@@ -18,6 +18,12 @@ module Squeeze
               @command.__send__(:parent_model)
             end
           end
+
+          def test_parent_model
+            assert_raises NotImplementedError do
+              @command.__send__(:parent_model)
+            end
+          end
         end
       end
     end

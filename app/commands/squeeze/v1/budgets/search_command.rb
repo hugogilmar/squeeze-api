@@ -5,9 +5,9 @@ module Squeeze
     module Budgets
       # Search budgets command
       class SearchCommand < Base::SearchCommand
-        # Models builder
-        def models
-          @models ||= current_user.budgets.page(page).per(per_page)
+        # Models scope
+        def models_scope
+          :budgets
         end
 
         # Serializer class used for json serialization

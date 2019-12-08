@@ -5,9 +5,9 @@ module Squeeze
     module Accounts
       # Delete accounts command
       class DeleteCommand < Base::DeleteCommand
-        # Model builder
-        def model
-          @model ||= current_user.accounts.find(resource_id)
+        # Model scope
+        def model_scope
+          :accounts
         end
       end
     end

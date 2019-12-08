@@ -10,9 +10,19 @@ module Squeeze
 
           private
 
+          # Model builder
+          def models
+            @models ||= parent_model.__send__(models_scope).page(page).per(per_page)
+          end
+
           # Parent model builder
           def parent_model
-            raise(NotImplementedError, 'parent model method not implemented')
+            @parent_model ||= current_user.__send__(parent_scope).find(parent_resource_id)
+          end
+
+          # Parent scope
+          def parent_scope
+            raise(NotImplementedError, 'parent_scope method not implemented')
           end
         end
       end

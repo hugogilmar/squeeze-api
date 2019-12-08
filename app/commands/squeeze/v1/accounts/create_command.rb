@@ -5,9 +5,9 @@ module Squeeze
     module Accounts
       # Create accounts command
       class CreateCommand < Base::CreateCommand
-        # Model builder
-        def model
-          @model ||= current_user.accounts.new
+        # Model scope
+        def model_scope
+          :accounts
         end
 
         # Form class used for params validation

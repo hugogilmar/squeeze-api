@@ -41,7 +41,12 @@ module Squeeze
 
         # Models builder
         def models
-          raise(NotImplementedError, 'models method not implemented')
+          @models ||= current_user.__send__(models_scope).page(page).per(per_page)
+        end
+
+        # Models scope
+        def models_scope
+          raise(NotImplementedError, 'models_scope method not implemented')
         end
 
         # Serializer builder

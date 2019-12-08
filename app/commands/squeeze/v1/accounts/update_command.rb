@@ -5,9 +5,9 @@ module Squeeze
     module Accounts
       # Update accounts command
       class UpdateCommand < Base::UpdateCommand
-        # Model builder
-        def model
-          @model ||= current_user.accounts.find(resource_id)
+        # Model scope
+        def model_scope
+          :accounts
         end
 
         # Form class used for params validation

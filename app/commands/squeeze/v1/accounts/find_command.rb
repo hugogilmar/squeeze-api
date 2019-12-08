@@ -5,9 +5,9 @@ module Squeeze
     module Accounts
       # Find accounts command
       class FindCommand < Base::FindCommand
-        # Model builder
-        def model
-          @model ||= current_user.accounts.find(resource_id)
+        # Model scope
+        def model_scope
+          :accounts
         end
 
         # Serializer class used for json serialization

@@ -6,6 +6,11 @@ module Squeeze
       # Update command base class
       class UpdateCommand < CreateCommand
         context current_user: nil, resource_id: nil
+
+        # Model builder
+        def model
+          @model ||= current_user.__send__(model_scope).find(resource_id)
+        end
       end
     end
   end

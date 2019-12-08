@@ -20,7 +20,12 @@ module Squeeze
 
         # Model builder
         def model
-          raise(NotImplementedError, 'model method not implemented')
+          @model ||= current_user.__send__(model_scope).new
+        end
+
+        # Model scope
+        def model_scope
+          raise(NotImplementedError, 'model_scope method not implemented')
         end
 
         # Form builder

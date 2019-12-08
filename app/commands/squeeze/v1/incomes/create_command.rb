@@ -5,14 +5,14 @@ module Squeeze
     module Incomes
       # Create incomes command
       class CreateCommand < Base::Nested::CreateCommand
-        # Model builder
-        def model
-          @model ||= parent_model.incomes.new
+        # Model scope
+        def model_scope
+          :incomes
         end
 
-        # Parent model builder
-        def parent_model
-          @parent_model ||= current_user.budgets.find(parent_resource_id)
+        # Parent scope
+        def parent_scope
+          :budgets
         end
 
         # Form class used for params validation

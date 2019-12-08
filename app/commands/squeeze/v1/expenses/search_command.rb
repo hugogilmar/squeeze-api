@@ -5,14 +5,14 @@ module Squeeze
     module Expenses
       # Search expenses command
       class SearchCommand < Base::Nested::SearchCommand
-        # Models builder
-        def models
-          @models ||= parent_model.expenses.page(page).per(per_page)
+        # Models scope
+        def models_scope
+          :expenses
         end
 
-        # Parent model builder
-        def parent_model
-          @parent_model ||= current_user.budgets.find(parent_resource_id)
+        # Parent scope
+        def parent_scope
+          :budgets
         end
 
         # Serializer class used for json serialization

@@ -4,10 +4,15 @@ module Squeeze
   module V1
     module Categories
       # Update categories command
-      class UpdateCommand < Budgets::Nested::UpdateCommand
+      class UpdateCommand < Base::Nested::UpdateCommand
         # Model builder
         def model
           @model ||= parent_model.categories.find(resource_id)
+        end
+
+        # Parent model builder
+        def parent_model
+          @parent_model ||= current_user.budgets.find(parent_resource_id)
         end
 
         # Form class used for params validation

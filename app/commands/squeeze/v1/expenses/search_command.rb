@@ -5,8 +5,6 @@ module Squeeze
     module Expenses
       # Search expenses command
       class SearchCommand < Base::Nested::SearchCommand
-        private
-
         # Models builder
         def models
           @models ||= parent_model.expenses.page(page).per(per_page)

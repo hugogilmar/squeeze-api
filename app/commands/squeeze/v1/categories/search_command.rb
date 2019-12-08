@@ -5,8 +5,6 @@ module Squeeze
     module Categories
       # Search categories command
       class SearchCommand < Base::Nested::SearchCommand
-        private
-
         # Models builder
         def models
           @models ||= parent_model.categories.page(page).per(per_page)

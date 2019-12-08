@@ -5,8 +5,6 @@ module Squeeze
     module Budgets
       # Find budgets command
       class FindCommand < Base::FindCommand
-        private
-
         # Model builder
         def model
           @model ||= current_user.budgets.find(resource_id)

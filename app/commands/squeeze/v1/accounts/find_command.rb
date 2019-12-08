@@ -5,8 +5,6 @@ module Squeeze
     module Accounts
       # Find accounts command
       class FindCommand < Base::FindCommand
-        private
-
         # Model builder
         def model
           @model ||= current_user.accounts.find(resource_id)

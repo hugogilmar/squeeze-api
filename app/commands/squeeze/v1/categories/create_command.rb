@@ -5,8 +5,6 @@ module Squeeze
     module Categories
       # Create categories command
       class CreateCommand < Base::Nested::CreateCommand
-        private
-
         # Model builder
         def model
           @model ||= parent_model.categories.new

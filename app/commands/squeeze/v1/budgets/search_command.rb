@@ -5,8 +5,6 @@ module Squeeze
     module Budgets
       # Search budgets command
       class SearchCommand < Base::SearchCommand
-        private
-
         # Models builder
         def models
           @models ||= current_user.budgets.page(page).per(per_page)

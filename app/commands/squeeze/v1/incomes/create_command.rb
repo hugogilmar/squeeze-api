@@ -5,8 +5,6 @@ module Squeeze
     module Incomes
       # Create incomes command
       class CreateCommand < Base::Nested::CreateCommand
-        private
-
         # Model builder
         def model
           @model ||= parent_model.incomes.new

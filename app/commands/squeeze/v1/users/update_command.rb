@@ -5,8 +5,6 @@ module Squeeze
     module Users
       # Update users command
       class UpdateCommand < Base::UpdateCommand
-        private
-
         # Model builder
         def model
           @model ||= current_user

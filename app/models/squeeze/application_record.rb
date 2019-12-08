@@ -3,14 +3,9 @@
 module Squeeze
   # Record base class
   class ApplicationRecord < ActiveRecord::Base
+    include Concerns::ResourceModel
+
     self.abstract_class = true
-
-    before_save :ensure_uuid
-
-    # Ensure model's uuid attribute is present
-    def ensure_uuid
-      self.uuid = UUID.new.generate if uuid.blank?
-    end
 
     class << self
       # Set table prefix for inherited models

@@ -5,8 +5,6 @@ module Squeeze
     module Expenses
       # Update expenses command
       class UpdateCommand < Base::Nested::UpdateCommand
-        private
-
         # Model builder
         def model
           @model ||= parent_model.expenses.find(resource_id)

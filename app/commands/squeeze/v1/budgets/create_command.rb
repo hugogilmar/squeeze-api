@@ -5,8 +5,6 @@ module Squeeze
     module Budgets
       # Create budgets command
       class CreateCommand < Base::CreateCommand
-        private
-
         # Model builder
         def model
           @model ||= current_user.budgets.new

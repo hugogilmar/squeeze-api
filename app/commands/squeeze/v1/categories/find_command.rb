@@ -5,8 +5,6 @@ module Squeeze
     module Categories
       # Find categories command
       class FindCommand < Base::Nested::FindCommand
-        private
-
         # Model builder
         def model
           @model ||= parent_model.categories.find(resource_id)

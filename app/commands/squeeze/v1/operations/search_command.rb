@@ -5,8 +5,6 @@ module Squeeze
     module Operations
       # Search operations command
       class SearchCommand < Base::Nested::SearchCommand
-        private
-
         # Models builder
         def models
           @models ||= parent_model.operations.page(page).per(per_page)

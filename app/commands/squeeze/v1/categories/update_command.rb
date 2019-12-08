@@ -5,8 +5,6 @@ module Squeeze
     module Categories
       # Update categories command
       class UpdateCommand < Base::Nested::UpdateCommand
-        private
-
         # Model builder
         def model
           @model ||= parent_model.categories.find(resource_id)

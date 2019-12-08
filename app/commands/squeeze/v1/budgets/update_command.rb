@@ -5,8 +5,6 @@ module Squeeze
     module Budgets
       # Update budgets command
       class UpdateCommand < Base::UpdateCommand
-        private
-
         # Model builder
         def model
           @model ||= current_user.budgets.find(resource_id)

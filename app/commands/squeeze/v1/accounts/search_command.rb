@@ -5,8 +5,6 @@ module Squeeze
     module Accounts
       # Search accounts command
       class SearchCommand < Base::SearchCommand
-        private
-
         # Models builder
         def models
           @models ||= current_user.accounts.page(page).per(per_page)

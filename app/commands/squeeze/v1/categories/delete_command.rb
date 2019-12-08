@@ -5,8 +5,6 @@ module Squeeze
     module Categories
       # Delete categories command
       class DeleteCommand < Base::Nested::DeleteCommand
-        private
-
         # Model builder
         def model
           @model ||= parent_model.categories.find(resource_id)

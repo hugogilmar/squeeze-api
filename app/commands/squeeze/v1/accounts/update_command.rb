@@ -5,8 +5,6 @@ module Squeeze
     module Accounts
       # Update accounts command
       class UpdateCommand < Base::UpdateCommand
-        private
-
         # Model builder
         def model
           @model ||= current_user.accounts.find(resource_id)

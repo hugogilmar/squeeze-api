@@ -5,8 +5,6 @@ module Squeeze
     module Accounts
       # Delete accounts command
       class DeleteCommand < Base::DeleteCommand
-        private
-
         # Model builder
         def model
           @model ||= current_user.accounts.find(resource_id)

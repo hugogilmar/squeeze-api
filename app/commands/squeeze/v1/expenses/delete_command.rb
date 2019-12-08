@@ -5,8 +5,6 @@ module Squeeze
     module Expenses
       # Delete expenses command
       class DeleteCommand < Base::Nested::DeleteCommand
-        private
-
         # Model builder
         def model
           @model ||= parent_model.expenses.find(resource_id)

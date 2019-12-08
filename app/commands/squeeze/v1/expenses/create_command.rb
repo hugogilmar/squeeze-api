@@ -5,8 +5,6 @@ module Squeeze
     module Expenses
       # Create expenses command
       class CreateCommand < Base::Nested::CreateCommand
-        private
-
         # Model builder
         def model
           @model ||= parent_model.expenses.new

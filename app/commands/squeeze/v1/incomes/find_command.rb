@@ -5,8 +5,6 @@ module Squeeze
     module Incomes
       # Find incomes command
       class FindCommand < Base::Nested::FindCommand
-        private
-
         # Model builder
         def model
           @model ||= parent_model.incomes.find(resource_id)

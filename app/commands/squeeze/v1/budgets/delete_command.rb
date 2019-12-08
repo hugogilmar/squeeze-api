@@ -5,8 +5,6 @@ module Squeeze
     module Budgets
       # Delete budgets command
       class DeleteCommand < Base::DeleteCommand
-        private
-
         # Model builder
         def model
           @model ||= current_user.budgets.find(resource_id)

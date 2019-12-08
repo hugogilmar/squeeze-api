@@ -704,6 +704,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GeneralError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
       operationId: get-v1-budget-categories
       parameters:
         - schema:
@@ -955,6 +961,12 @@ paths:
                   - data
         '401':
           description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '404':
+          description: Not found
           content:
             application/json:
               schema:
@@ -1214,6 +1226,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GeneralError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
       operationId: get-v1-budget-expenses
       parameters:
         - schema:
@@ -1436,6 +1454,57 @@ paths:
         - Authentication token: []
       tags:
         - Expenses
+  '/v1/accounts/{account_id}/operations':
+    parameters:
+      - name: account_id
+        in: path
+        schema:
+          type: integer
+        required: true
+    get:
+      summary: User account operations search
+      tags:
+        - Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Operation'
+                  meta:
+                    $ref: '#/components/schemas/Metadata'
+                required:
+                  - data
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+      operationId: get-v1-account-operations
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: page
+        - schema:
+            type: number
+          in: query
+          name: per_page
+      security:
+        - Authentication token: []
 components:
   securitySchemes:
     Authentication token:
@@ -1736,6 +1805,35 @@ components:
         - account_id
         - description
         - amount
+    Operation:
+      type: object
+      properties:
+        id:
+          type: number
+        uuid:
+          type: string
+          format: uuid
+        amount:
+          type: number
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        operable:
+          type: object
+          oneOf:
+            - $ref: '#/components/schemas/Income'
+            - $ref: '#/components/schemas/Expense'
+      required:
+        - id
+        - uuid
+        - amount
+        - created_at
+        - updated_at
+        - account
+        - operable
     AuthenticationToken:
       type: object
       properties:
@@ -1810,3 +1908,5 @@ tags:
     description: User budget incomes management
   - name: Expenses
     description: User budget expenses management
+  - name: Operations
+    description: User account operations management

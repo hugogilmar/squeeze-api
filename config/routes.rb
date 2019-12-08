@@ -7,7 +7,9 @@ Rails.application.routes.draw do
       resource :authentication, only: %i[create]
       resources :users, only: %i[create]
       resource :user, only: %i[update]
-      resources :accounts
+      resources :accounts do
+        resources :operations, only: %i[index]
+      end
       resources :budgets do
         resources :categories
         resources :incomes

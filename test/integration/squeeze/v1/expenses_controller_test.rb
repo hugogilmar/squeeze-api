@@ -180,7 +180,7 @@ module Squeeze
         assert_response :success
       end
 
-      test 'should find expenses by budget not found id' do
+      test 'should not find expenses by budget not found id' do
         get v1_budget_expenses_url(budget_id: Faker::Number.within(range: 100..200)), headers: @headers
         assert_response :not_found
       end

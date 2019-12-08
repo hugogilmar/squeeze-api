@@ -16,17 +16,6 @@ module Squeeze
 
       private_constant :ACTION_COMMANDS
 
-      included do
-        class_attribute :resource_version
-      end
-
-      class_methods do
-        # Resource version namspace
-        def set_resource_version(version)
-          self.resource_version = version
-        end
-      end
-
       # Resource index endpoint
       def index
         result = resource_command.new(resources_context).call(filter_params)
@@ -64,6 +53,11 @@ module Squeeze
 
       private
 
+      # Resource version
+      def resource_version
+        :V1
+      end
+
       # Resource namespace
       def resource_namespace
         controller_name.camelize
@@ -84,6 +78,7 @@ module Squeeze
         { current_user: current_user }.merge(resources_extra_context)
       end
 
+      # Resources extra context
       def resources_extra_context
         {}
       end
@@ -93,6 +88,7 @@ module Squeeze
         resources_context.merge(resource_id: resource_param_id).merge(resource_extra_context)
       end
 
+      # Resource extra context
       def resource_extra_context
         {}
       end

@@ -7,6 +7,8 @@ module Squeeze
       extend ActiveSupport::Concern
 
       included do
+        include Discard::Model
+        self.discard_column = :deleted_at
         before_save :ensure_uuid
       end
 

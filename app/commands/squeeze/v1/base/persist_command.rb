@@ -20,7 +20,7 @@ module Squeeze
 
         # Model builder
         def model
-          @model ||= current_user.__send__(model_scope).find(resource_id)
+          @model ||= current_user.__send__(model_scope).kept.find(resource_id)
         end
 
         # Model scope

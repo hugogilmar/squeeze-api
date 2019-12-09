@@ -44,7 +44,7 @@ module Squeeze
 
           # User builder by decoded token data
           def _user
-            @_user ||= Squeeze::User.find_by(email: token[:email])
+            @_user ||= Squeeze::User.kept.find_by(email: token[:email])
           end
 
           # Token decode option

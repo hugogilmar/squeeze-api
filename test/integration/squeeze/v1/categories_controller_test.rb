@@ -133,8 +133,8 @@ module Squeeze
       end
 
       test 'should not delete category by exception' do
-        raises_exception = -> { raise ActiveRecord::RecordNotDestroyed.new(nil, @category) }
-        stub_any_instance(ActiveRecord::Base, :destroy!, raises_exception) do
+        raises_exception = -> { raise Discard::RecordNotDiscarded.new(nil, @category) }
+        stub_any_instance(Squeeze::ApplicationRecord, :discard!, raises_exception) do
           delete v1_budget_category_url(budget_id: @budget.id, id: @category.id), headers: @headers
           assert_response :unprocessable_entity
         end

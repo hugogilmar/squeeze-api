@@ -153,8 +153,8 @@ module Squeeze
       end
 
       test 'should not delete expense by exception' do
-        raises_exception = -> { raise ActiveRecord::RecordNotDestroyed.new(nil, @expense) }
-        stub_any_instance(ActiveRecord::Base, :destroy!, raises_exception) do
+        raises_exception = -> { raise Discard::RecordNotDiscarded.new(nil, @expense) }
+        stub_any_instance(Squeeze::ApplicationRecord, :discard!, raises_exception) do
           delete v1_budget_expense_url(budget_id: @budget.id, id: @expense.id), headers: @headers
           assert_response :unprocessable_entity
         end

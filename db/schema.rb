@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_07_155611) do
+ActiveRecord::Schema.define(version: 2019_12_09_094346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,6 +111,8 @@ ActiveRecord::Schema.define(version: 2019_12_07_155611) do
     t.string "last_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_squeeze_profiles_on_deleted_at"
     t.index ["user_id"], name: "index_squeeze_profiles_on_user_id"
     t.index ["uuid"], name: "index_squeeze_profiles_on_uuid", unique: true
   end
@@ -121,6 +123,8 @@ ActiveRecord::Schema.define(version: 2019_12_07_155611) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_squeeze_users_on_deleted_at"
     t.index ["email"], name: "index_squeeze_users_on_email", unique: true
     t.index ["uuid"], name: "index_squeeze_users_on_uuid", unique: true
   end

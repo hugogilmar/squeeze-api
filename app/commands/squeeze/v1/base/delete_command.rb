@@ -7,7 +7,7 @@ module Squeeze
       class DeleteCommand < MemberCommand
         # Command execution
         def call
-          model.destroy!
+          model.discard!
 
           success(model)
         end

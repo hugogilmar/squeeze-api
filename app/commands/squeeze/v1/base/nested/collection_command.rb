@@ -12,12 +12,12 @@ module Squeeze
 
           # Model builder
           def models
-            @models ||= parent_model.__send__(models_scope).page(page).per(per_page)
+            @models ||= parent_model.__send__(models_scope).kept.page(page).per(per_page)
           end
 
           # Parent model builder
           def parent_model
-            @parent_model ||= current_user.__send__(parent_scope).find(parent_resource_id)
+            @parent_model ||= current_user.__send__(parent_scope).kept.find(parent_resource_id)
           end
 
           # Parent scope

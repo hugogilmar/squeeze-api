@@ -41,7 +41,7 @@ module Squeeze
 
         # Models builder
         def models
-          @models ||= current_user.__send__(models_scope).page(page).per(per_page)
+          @models ||= current_user.__send__(models_scope).kept.page(page).per(per_page)
         end
 
         # Models scope

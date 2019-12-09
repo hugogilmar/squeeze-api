@@ -46,7 +46,7 @@ module Squeeze
 
           # User builder by database email existance
           def _user
-            @_user ||= Squeeze::User.find_by(email: email)
+            @_user ||= Squeeze::User.kept.find_by(email: email)
           end
         end
       end

@@ -17,7 +17,7 @@ module Squeeze
         render json: { error: e.message.capitalize, detail: e.record.errors }, status: 422
       end
 
-      rescue_from ActiveRecord::RecordNotDestroyed do |e|
+      rescue_from ActiveRecord::RecordNotDestroyed, Discard::RecordNotDiscarded do |e|
         render json: { error: e.message.capitalize, detail: e.record.errors }, status: 422
       end
 

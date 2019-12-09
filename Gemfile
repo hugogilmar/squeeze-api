@@ -14,6 +14,7 @@ gem('redis', '~> 4.1.3', require: ['redis', 'redis/connection/hiredis'])
 
 gem('active_model_serializers', '~> 0.10.10')
 gem('bcrypt', '~> 3.1.13')
+gem('discard', '~> 1.1.0')
 gem('jwt', '~> 2.2.1')
 gem('kaminari', '~> 1.1.1')
 gem('pathway', '~> 0.10.0')

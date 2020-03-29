@@ -10,13 +10,14 @@ module Squeeze
 
     after_save :store_operation!
     after_discard do
-      operation.discard
+      operation.discard unless operation.nil?
     end
 
     # Store expense operation callback
     def store_operation!
       operation_attrs = { account: account, amount: amount.abs * -1 }
-      operation.nil? ? create_operation(operation_attrs) : operation.update(operation_attrs)
+
+      StoreOperationJob.perform_later(self, operation_attrs)
     end
   end
 end

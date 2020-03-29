@@ -1,12 +1,13 @@
 FROM ruby:2.6-alpine
 
 RUN apk --update add --no-cache \
+  bash \
   build-base \
-  tzdata \
+  nano \
   postgresql-client \
   postgresql-dev \
   socat \
-  nano \
+  tzdata \
   && rm -rf /var/cache/apk/*
 
 ENV APP_HOME /opt/project/app
@@ -27,3 +28,6 @@ RUN bundle install
 VOLUME /usr/local/bundle
 
 ADD . $APP_HOME
+
+ENTRYPOINT /opt/project/docker/entrypoint.sh
+CMD /opt/project/docker/command.sh

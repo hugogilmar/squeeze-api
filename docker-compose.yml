@@ -1,6 +1,7 @@
 version: '3.5'
 services:
-  app:
+  api:
+    image: hugogilmar/squeeze-api
     build:
       context: .
     env_file: .env
@@ -18,12 +19,12 @@ services:
     networks:
       squeeze-dev:
         aliases:
-          - app.dev
+          - api.dev
   db:
     image: postgres:11.5-alpine
     env_file: .env
-    # volumes:
-    #  - ./docker/db:/docker-entrypoint-initdb.d:delegated
+    volumes:
+     - ./docker/db:/docker-entrypoint-initdb.d:delegated
     ports:
       - 5432:5432
     networks:
@@ -40,13 +41,15 @@ services:
         aliases:
           - cache.dev
   web:
+    image: nginx:1.17-alpine
     ports:
       - 80:80
-    image: nginx:1.17-alpine
     volumes:
       - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
     networks:
-      squeeze-dev: null
+      squeeze-dev:
+        aliases:
+          - web.dev
 volumes:
   bundle:
     driver: local

@@ -10,7 +10,7 @@ module Squeeze
 
     after_save :store_operation!
     after_discard do
-      operation.discard unless operation.nil?
+      operation&.discard
     end
 
     # Store income operation callback

@@ -12,6 +12,7 @@ require('factory_bot')
 require('faker')
 require('rails/test_help')
 require('rack/test')
+require('sidekiq/testing')
 require('support/stub_test_helpers')
 require('support/token_test_helpers')
 

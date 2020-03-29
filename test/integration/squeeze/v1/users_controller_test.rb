@@ -7,7 +7,7 @@ module Squeeze
     class UsersControllerTest < ActionDispatch::IntegrationTest
       def setup
         @user = FactoryBot.create(:user)
-        @token = generate_authentication_token(@user)
+        @token = bearer_token(@user)
       end
 
       test 'should create user' do
@@ -83,7 +83,7 @@ module Squeeze
       end
 
       test 'should not update user by wrong authorization token' do
-        token = Faker::Crypto.md5
+        token = "Bearer #{Faker::Crypto.md5}"
         data = {
           data: {
             profile: {

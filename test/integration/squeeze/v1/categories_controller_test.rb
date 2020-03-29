@@ -9,7 +9,7 @@ module Squeeze
         @user = FactoryBot.create(:user)
         @budget = FactoryBot.create(:budget, user: @user)
         @category = FactoryBot.create(:category, budget: @budget)
-        @token = generate_authentication_token(@user)
+        @token = bearer_token(@user)
         @headers = { 'Content-type': 'application/json', 'Authorization': @token }
       end
 

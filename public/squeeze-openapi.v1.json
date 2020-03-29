@@ -156,7 +156,7 @@
         },
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ],
         "tags": [
@@ -228,7 +228,7 @@
         ],
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ]
       }
@@ -364,7 +364,7 @@
         ],
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ]
       },
@@ -431,7 +431,7 @@
         },
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ],
         "requestBody": {
@@ -509,7 +509,7 @@
         "operationId": "get-v1-accounts-member",
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ]
       },
@@ -575,7 +575,7 @@
         },
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ],
         "requestBody": {
@@ -658,7 +658,7 @@
         },
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ],
         "requestBody": {
@@ -709,7 +709,7 @@
         },
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ],
         "tags": [
@@ -778,7 +778,7 @@
         ],
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ]
       },
@@ -845,7 +845,7 @@
         },
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ],
         "requestBody": {
@@ -923,7 +923,7 @@
         "operationId": "get-v1-budgets-member",
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ]
       },
@@ -989,7 +989,7 @@
         },
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ],
         "requestBody": {
@@ -1072,7 +1072,7 @@
         },
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ],
         "requestBody": {
@@ -1123,7 +1123,7 @@
         },
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ],
         "tags": [
@@ -1212,7 +1212,7 @@
         ],
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ]
       },
@@ -1278,7 +1278,7 @@
         },
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ],
         "requestBody": {
@@ -1364,7 +1364,7 @@
         "operationId": "get-v1-budget-categories-member",
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ]
       },
@@ -1430,7 +1430,7 @@
         },
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ],
         "requestBody": {
@@ -1513,7 +1513,7 @@
         },
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ],
         "requestBody": {
@@ -1564,7 +1564,7 @@
         },
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ],
         "tags": [
@@ -1653,7 +1653,7 @@
         ],
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ]
       },
@@ -1719,7 +1719,7 @@
         },
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ],
         "requestBody": {
@@ -1805,7 +1805,7 @@
         "operationId": "get-v1-budget-incomes-member",
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ]
       },
@@ -1871,7 +1871,7 @@
         },
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ],
         "requestBody": {
@@ -1954,7 +1954,7 @@
         },
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ],
         "requestBody": {
@@ -2005,7 +2005,7 @@
         },
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ],
         "tags": [
@@ -2094,7 +2094,7 @@
         ],
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ]
       },
@@ -2160,7 +2160,7 @@
         },
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ],
         "requestBody": {
@@ -2246,7 +2246,7 @@
         "operationId": "get-v1-budget-expenses-member",
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ]
       },
@@ -2312,7 +2312,7 @@
         },
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ],
         "requestBody": {
@@ -2395,7 +2395,7 @@
         },
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ],
         "requestBody": {
@@ -2446,7 +2446,7 @@
         },
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ],
         "tags": [
@@ -2535,7 +2535,7 @@
         ],
         "security": [
           {
-            "Authentication token": []
+            "JWT": []
           }
         ]
       }
@@ -2543,11 +2543,10 @@
   },
   "components": {
     "securitySchemes": {
-      "Authentication token": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "Authorization",
-        "description": "Users authentication endpoint will provide a JWT for authorization."
+      "JWT": {
+        "type": "http",
+        "description": "Users authentication endpoint will provide a JWT for authorization.",
+        "scheme": "bearer"
       }
     },
     "schemas": {

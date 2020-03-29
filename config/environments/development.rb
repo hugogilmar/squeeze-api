@@ -52,5 +52,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Allow requests from hosts
-  config.hosts << 'squeeze.lvh.me'
+  config.hosts << 'api.lvh.me'
 end

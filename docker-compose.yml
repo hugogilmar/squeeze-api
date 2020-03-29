@@ -20,6 +20,8 @@ services:
       squeeze-dev:
         aliases:
           - api.dev
+    deploy:
+      replicas: 1
   db:
     image: postgres:11.5-alpine
     env_file: .env
@@ -31,6 +33,8 @@ services:
       squeeze-dev:
         aliases:
           - db.dev
+    deploy:
+      replicas: 1
   cache:
     image: redis:5.0-alpine
     env_file: .env
@@ -40,6 +44,8 @@ services:
       squeeze-dev:
         aliases:
           - cache.dev
+    deploy:
+      replicas: 1
   web:
     image: nginx:1.17-alpine
     ports:
@@ -50,6 +56,8 @@ services:
       squeeze-dev:
         aliases:
           - web.dev
+    deploy:
+      replicas: 1
 volumes:
   bundle:
     driver: local

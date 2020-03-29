@@ -83,7 +83,7 @@ module Squeeze
       end
 
       test 'should not update user by wrong authorization token' do
-        token = Faker::Crypto.md5
+        token = "Bearer #{Faker::Crypto.md5}"
         data = {
           data: {
             profile: {

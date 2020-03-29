@@ -11,7 +11,7 @@ module Squeeze
       def setup
         @user = FactoryBot.create(:user)
         @account = FactoryBot.create(:account, user: @user)
-        @token = generate_authentication_token(@user)
+        @token = bearer_token(@user)
         @headers = { 'Content-type': 'application/json', 'Authorization': @token }
       end
 

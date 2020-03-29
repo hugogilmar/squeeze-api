@@ -9,9 +9,11 @@ module Squeeze
       module Strategies
         # Warden JTW token authentication strategy
         class Token < ::Warden::Strategies::Base
+          BEARER_PATTERN = /^Bearer /.freeze
+
           # Validate strategy required data
           def valid?
-            authentication_token.present?
+            authorization_header.present? && authorization_header.match(BEARER_PATTERN) && authentication_token.present?
           end
 
           # Authenticate user
@@ -28,9 +30,14 @@ module Squeeze
             token && Time.zone.at(token[:exp]) > Time.zone.now
           end
 
-          # Authentication token from environment variables
+          # Authorization header from environment variables
+          def authorization_header
+            @authorization_header ||= env['HTTP_AUTHORIZATION']
+          end
+
+          # Authentication token from authorization header
           def authentication_token
-            @authentication_token ||= env['HTTP_AUTHORIZATION']
+            @authentication_token ||= authorization_header.gsub(BEARER_PATTERN, '')
           end
 
           # Decoded token from authentication token

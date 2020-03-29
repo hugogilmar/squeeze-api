@@ -3,6 +3,10 @@
 require('jwt')
 
 module TokenTestHelpers
+  def bearer_token(user)
+    "Bearer #{generate_authentication_token(user)}"
+  end
+
   def generate_authentication_token(user)
     JWT.encode(authentication_token_payload(user), authentication_token_secret, authentication_token_algorithm)
   end

@@ -95,7 +95,7 @@ paths:
                 data:
                   $ref: '#/components/schemas/UpdateUser'
       security:
-        - Authentication token: []
+        - JWT: []
       tags:
         - Users
     patch:
@@ -138,7 +138,7 @@ paths:
       tags:
         - Users
       security:
-        - Authentication token: []
+        - JWT: []
   /v1/authentication:
     post:
       summary: Users authentication
@@ -219,7 +219,7 @@ paths:
           in: query
           name: per_page
       security:
-        - Authentication token: []
+        - JWT: []
     parameters: []
     post:
       summary: User account create
@@ -259,7 +259,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnprocessableError'
       security:
-        - Authentication token: []
+        - JWT: []
       requestBody:
         content:
           application/json:
@@ -305,7 +305,7 @@ paths:
                 $ref: '#/components/schemas/GeneralError'
       operationId: get-v1-accounts-member
       security:
-        - Authentication token: []
+        - JWT: []
     put:
       summary: User account update
       operationId: put-v1-accounts-member
@@ -344,7 +344,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnprocessableError'
       security:
-        - Authentication token: []
+        - JWT: []
       requestBody:
         content:
           application/json:
@@ -393,7 +393,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnprocessableError'
       security:
-        - Authentication token: []
+        - JWT: []
       requestBody:
         content:
           application/json:
@@ -423,7 +423,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/GeneralError'
       security:
-        - Authentication token: []
+        - JWT: []
       tags:
         - Accounts
   /v1/budgets:
@@ -464,7 +464,7 @@ paths:
           in: query
           name: per_page
       security:
-        - Authentication token: []
+        - JWT: []
     parameters: []
     post:
       summary: User budget create
@@ -504,7 +504,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnprocessableError'
       security:
-        - Authentication token: []
+        - JWT: []
       requestBody:
         content:
           application/json:
@@ -550,7 +550,7 @@ paths:
                 $ref: '#/components/schemas/GeneralError'
       operationId: get-v1-budgets-member
       security:
-        - Authentication token: []
+        - JWT: []
     put:
       summary: User budget update
       operationId: put-v1-budgets-member
@@ -589,7 +589,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnprocessableError'
       security:
-        - Authentication token: []
+        - JWT: []
       requestBody:
         content:
           application/json:
@@ -638,7 +638,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnprocessableError'
       security:
-        - Authentication token: []
+        - JWT: []
       requestBody:
         content:
           application/json:
@@ -668,7 +668,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/GeneralError'
       security:
-        - Authentication token: []
+        - JWT: []
       tags:
         - Budgets
   '/v1/budgets/{budget_id}/categories':
@@ -721,7 +721,7 @@ paths:
           in: query
           name: per_page
       security:
-        - Authentication token: []
+        - JWT: []
     post:
       summary: User budget category create
       operationId: post-v1-budget-categories
@@ -760,7 +760,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnprocessableError'
       security:
-        - Authentication token: []
+        - JWT: []
       requestBody:
         content:
           application/json:
@@ -811,7 +811,7 @@ paths:
                 $ref: '#/components/schemas/GeneralError'
       operationId: get-v1-budget-categories-member
       security:
-        - Authentication token: []
+        - JWT: []
     put:
       summary: User budget category update
       operationId: put-v1-budget-categories-member
@@ -850,7 +850,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnprocessableError'
       security:
-        - Authentication token: []
+        - JWT: []
       requestBody:
         content:
           application/json:
@@ -899,7 +899,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnprocessableError'
       security:
-        - Authentication token: []
+        - JWT: []
       requestBody:
         content:
           application/json:
@@ -929,7 +929,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/GeneralError'
       security:
-        - Authentication token: []
+        - JWT: []
       tags:
         - Categories
   '/v1/budgets/{budget_id}/incomes':
@@ -982,7 +982,7 @@ paths:
           in: query
           name: per_page
       security:
-        - Authentication token: []
+        - JWT: []
     post:
       summary: User budget income create
       operationId: post-v1-budget-incomes
@@ -1021,7 +1021,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnprocessableError'
       security:
-        - Authentication token: []
+        - JWT: []
       requestBody:
         content:
           application/json:
@@ -1072,7 +1072,7 @@ paths:
                 $ref: '#/components/schemas/GeneralError'
       operationId: get-v1-budget-incomes-member
       security:
-        - Authentication token: []
+        - JWT: []
     put:
       summary: User budget income update
       operationId: put-v1-budget-incomes-member
@@ -1111,7 +1111,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnprocessableError'
       security:
-        - Authentication token: []
+        - JWT: []
       requestBody:
         content:
           application/json:
@@ -1160,7 +1160,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnprocessableError'
       security:
-        - Authentication token: []
+        - JWT: []
       requestBody:
         content:
           application/json:
@@ -1190,7 +1190,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/GeneralError'
       security:
-        - Authentication token: []
+        - JWT: []
       tags:
         - Incomes
   '/v1/budgets/{budget_id}/expenses':
@@ -1243,7 +1243,7 @@ paths:
           in: query
           name: per_page
       security:
-        - Authentication token: []
+        - JWT: []
     post:
       summary: User budget expense create
       operationId: post-v1-budget-expenses
@@ -1282,7 +1282,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnprocessableError'
       security:
-        - Authentication token: []
+        - JWT: []
       requestBody:
         content:
           application/json:
@@ -1333,7 +1333,7 @@ paths:
                 $ref: '#/components/schemas/GeneralError'
       operationId: get-v1-budget-expenses-member
       security:
-        - Authentication token: []
+        - JWT: []
     put:
       summary: User budget expense update
       operationId: put-v1-budget-expenses-member
@@ -1372,7 +1372,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnprocessableError'
       security:
-        - Authentication token: []
+        - JWT: []
       requestBody:
         content:
           application/json:
@@ -1421,7 +1421,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnprocessableError'
       security:
-        - Authentication token: []
+        - JWT: []
       requestBody:
         content:
           application/json:
@@ -1451,7 +1451,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/GeneralError'
       security:
-        - Authentication token: []
+        - JWT: []
       tags:
         - Expenses
   '/v1/accounts/{account_id}/operations':
@@ -1504,15 +1504,14 @@ paths:
           in: query
           name: per_page
       security:
-        - Authentication token: []
+        - JWT: []
 components:
   securitySchemes:
-    Authentication token:
-      type: apiKey
-      in: header
-      name: Authorization
+    JWT:
+      type: http
       description: >-
         Users authentication endpoint will provide a JWT for authorization.
+      scheme: bearer
   schemas:
     User:
       type: object

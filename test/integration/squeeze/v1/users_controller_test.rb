@@ -7,7 +7,7 @@ module Squeeze
     class UsersControllerTest < ActionDispatch::IntegrationTest
       def setup
         @user = FactoryBot.create(:user)
-        @token = generate_authentication_token(@user)
+        @token = bearer_token(@user)
       end
 
       test 'should create user' do

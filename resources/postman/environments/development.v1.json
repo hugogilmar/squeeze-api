@@ -1,0 +1,19 @@
+{
+	"id": "018b65bb-8ddb-4a43-b955-3fdea71bf1e9",
+	"name": "development",
+	"values": [
+		{
+			"key": "baseUrl",
+			"value": "http://api.lvh.me",
+			"enabled": true
+		},
+		{
+			"key": "token",
+			"value": "",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2020-04-11T11:09:13.838Z",
+	"_postman_exported_using": "Postman/7.22.1"
+}

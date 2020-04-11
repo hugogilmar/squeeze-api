@@ -1,0 +1,19 @@
+{
+	"id": "12c92bbb-9678-47dd-a7d7-3cce2f1fda99",
+	"name": "staging",
+	"values": [
+		{
+			"key": "baseUrl",
+			"value": "https://floating-brook-34623.herokuapp.com",
+			"enabled": true
+		},
+		{
+			"key": "token",
+			"value": "",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2020-04-11T11:09:59.263Z",
+	"_postman_exported_using": "Postman/7.22.1"
+}

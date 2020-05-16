@@ -1,7 +1,6 @@
 FROM ruby:2.6-alpine
 
 RUN apk --update add --no-cache \
-  bash \
   build-base \
   nano \
   postgresql-client \

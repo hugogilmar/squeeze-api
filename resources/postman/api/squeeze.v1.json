@@ -742,7 +742,8 @@
                     }
                   },
                   "required": [
-                    "data"
+                    "data",
+                    "meta"
                   ]
                 }
               }
@@ -3049,10 +3050,12 @@
             "type": "number"
           },
           "next_page": {
-            "type": "number"
+            "type": "number",
+            "nullable": true
           },
           "prev_page": {
-            "type": "number"
+            "type": "number",
+            "nullable": true
           }
         },
         "required": [

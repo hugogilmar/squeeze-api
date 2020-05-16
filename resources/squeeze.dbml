@@ -1,0 +1,91 @@
+Table squeeze_accounts {
+  id bigint [pk, increment]
+  user_id bigint [ref: > squeeze_users.id]
+  uuid string [unique]
+  kind integer
+  description string
+  reference_number string
+  deleted_at datetime
+  created_at datetime
+  updated_at datetime
+}
+
+Table squeeze_budgets {
+  id bigint [pk, increment]
+  user_id bigint [ref: > squeeze_users.id]
+  uuid string [unique]
+  description string
+  deleted_at datetime
+  created_at datetime
+  updated_at datetime
+}
+
+Table squeeze_categories {
+  id bigint [pk, increment]
+  budget_id bigint [ref: > squeeze_budgets.id]
+  uuid string [unique]
+  description string
+  amount decimal
+  deleted_at datetime
+  created_at datetime
+  updated_at datetime
+}
+
+Table squeeze_expenses {
+  id bigint [pk, increment]
+  budget_id bigint [ref: > squeeze_budgets.id]
+  category_id bigint [ref: > squeeze_categories.id]
+  account_id bigint [ref: > squeeze_accounts.id]
+  uuid string [unique]
+  description string
+  amount decimal
+  deleted_at datetime
+  created_at datetime
+  updated_at datetime
+}
+
+Table squeeze_incomes {
+  id bigint [pk, increment]
+  budget_id bigint [ref: > squeeze_budgets.id]
+  category_id bigint [ref: > squeeze_categories.id]
+  account_id bigint [ref: > squeeze_accounts.id]
+  uuid string [unique]
+  description string
+  amount decimal
+  deleted_at datetime
+  created_at datetime
+  updated_at datetime
+}
+
+Table squeeze_operations {
+  id bigint [pk, increment]
+  account_id bigint [ref: > squeeze_accounts.id]
+  operable_type string
+  operable_id bigint
+  uuid string [unique]
+  amount decimal
+  deleted_at datetime
+  created_at datetime
+  updated_at datetime
+}
+
+Table squeeze_profiles {
+  id bigint [pk, increment]
+  user_id bigint [ref: - squeeze_users.id]
+  uuid string [unique]
+  first_name string
+  last_name string
+  created_at datetime
+  updated_at datetime
+  deleted_at datetime
+}
+
+Table squeeze_users {
+  id bigint [pk, increment]
+  uuid string [unique]
+  email string
+  password_digest string
+  created_at datetime
+  updated_at datetime
+  deleted_at datetime
+}

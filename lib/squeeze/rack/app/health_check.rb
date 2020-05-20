@@ -32,13 +32,13 @@ module Squeeze
         end
 
         def redis_connected
-          Redis.new(url: ENV['REDIS_URL']).ping === 'PONG'
+          Redis.new(url: ENV['REDIS_URL']).ping == 'PONG'
         rescue Redis::BaseConnectionError, Errno::ECONNREFUSED
           false
         end
 
         def postgres_connected
-          PG::Connection.ping(ENV['DATABASE_URL']) === PG::PQPING_OK
+          PG::Connection.ping(ENV['DATABASE_URL']) == PG::PQPING_OK
         rescue PG::Error, PG::ConnectionBad
           false
         end

@@ -14,4 +14,4 @@ if [ -f "Gemfile" ]; then
   bundle exec rake about
 fi
 
-socat TCP-LISTEN:80,fork,reuseaddr TCP:localhost:3000 & bundle exec rails s & bundle exec sidekiq
+socat TCP-LISTEN:80,fork,reuseaddr TCP:localhost:$PUMA_PORT & bundle exec rails s & bundle exec sidekiq

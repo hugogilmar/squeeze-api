@@ -24,6 +24,8 @@ Bundler.require(*Rails.groups)
 module Squeeze
   # Application class
   class Application < Rails::Application
+    VERSION = '0.0.0'
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults(6.0)
 

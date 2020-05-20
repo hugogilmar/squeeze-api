@@ -26,31 +26,21 @@ module Squeeze
               connected: redis_connected
             },
             postgres: {
-              connected: postgres_connected,
-              migrations_updated: postgres_migrations_updated
+              connected: postgres_connected
             }
           }
         end
 
         def redis_connected
-          redis = Redis.new(url: ENV['REDIS_URL'])
-          redis.ping == 'PONG'
-        rescue Redis::BaseConnectionError
+          Redis.new(url: ENV['REDIS_URL']).ping === 'PONG'
+        rescue Redis::BaseConnectionError, Errno::ECONNREFUSED
           false
         end
 
         def postgres_connected
-          ApplicationRecord.establish_connection
-          ApplicationRecord.connection
-          ApplicationRecord.connected?
-        rescue PG::Error
+          PG::Connection.ping(ENV['DATABASE_URL']) === PG::PQPING_OK
+        rescue PG::Error, PG::ConnectionBad
           false
-        end
-
-        def postgres_migrations_updated
-          return false unless postgres_connected
-
-          !ApplicationRecord.connection.migration_context.needs_migration?
         end
       end
     end

@@ -9,7 +9,8 @@ module Squeeze
       module Strategies
         # Warden JTW token authentication strategy
         class Token < ::Warden::Strategies::Base
-          BEARER_PATTERN = /^Bearer /
+          BEARER_PATTERN = /^Bearer /.freeze
+          public_constant :BEARER_PATTERN
 
           # Validate strategy required data
           def valid?

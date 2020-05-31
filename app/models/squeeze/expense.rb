@@ -26,7 +26,7 @@ module Squeeze
 
     # Remove operation job if job exists
     def remove_operation_job!
-      return unless meta_job_id.present?
+      return if meta_job_id.blank?
 
       job = Sidekiq::ScheduledSet.new.find_job(meta_job_id)
       job&.delete

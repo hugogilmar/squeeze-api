@@ -2,6 +2,7 @@ FROM ruby:2.7.3-alpine
 
 RUN apk --update add --no-cache \
   build-base \
+  git \
   nano \
   postgresql-client \
   postgresql-dev \

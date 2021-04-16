@@ -1,10 +1,11 @@
-FROM ruby:2.6-alpine
+FROM ruby:2.7.3-alpine
 
 RUN apk --update add --no-cache \
   build-base \
   nano \
   postgresql-client \
   postgresql-dev \
+  shared-mime-info \
   socat \
   tzdata \
   && rm -rf /var/cache/apk/*
@@ -20,7 +21,7 @@ RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
 
 ADD Gemfile $APP_HOME
-ADD Gemfile.lock $APP_HOME
+# ADD Gemfile.lock $APP_HOME
 RUN echo "gem: --no-document" > /root/.gemrc
 RUN bundle install
 

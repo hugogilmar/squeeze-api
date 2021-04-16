@@ -22,7 +22,6 @@ gem('pathway', '~> 0.10')
 gem('reform-rails', '~> 0.1')
 gem('rollout', '~> 2.4')
 gem('sidekiq', '~> 6.0')
-gem('uuid', '~> 2.3')
 gem('warden', '~> 1.2')
 
 gem('bootsnap', '~> 1.4', require: false)

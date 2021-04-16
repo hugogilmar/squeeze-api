@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-source'https://rubygems.org'
+source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.3'
@@ -9,7 +9,7 @@ gem 'rails', '~> 6.1'
 
 gem 'hiredis', '~> 0.6'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.12')
+gem 'puma', '~> 3.12'
 gem 'redis', '~> 4.1', require: ['redis', 'redis/connection/hiredis']
 gem 'redis-namespace', '~> 1.7'
 

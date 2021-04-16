@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require'jwt'
+require 'jwt'
 require 'ostruct'
 
 module Squeeze

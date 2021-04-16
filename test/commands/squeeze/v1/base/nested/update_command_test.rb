@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require('test_helper')
+require 'test_helper'
 
 class DummyNestedUpdateCommand < Squeeze::V1::Base::Nested::UpdateCommand; end
 

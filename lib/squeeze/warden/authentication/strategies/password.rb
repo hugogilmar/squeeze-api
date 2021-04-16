@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require('bcrypt')
-require('json')
-require('warden')
+require 'bcrypt'
+require 'json'
+require 'warden'
 
 module Squeeze
   module Warden

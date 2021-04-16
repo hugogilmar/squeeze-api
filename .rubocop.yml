@@ -1,6 +1,7 @@
 AllCops:
   EnabledByDefault: true
-  TargetRubyVersion: 2.5
+  NewCops: enable
+  TargetRubyVersion: 2.7
   Exclude:
     - 'app/views/**/*'
     - 'bin/**/*'
@@ -8,12 +9,14 @@ AllCops:
     - 'test/**/*'
 Bundler/GemComment:
   Enabled: false
+Layout/LineLength:
+  Max: 120
 Lint/NumberConversion:
+  Enabled: false
+Lint/ConstantResolution:
   Enabled: false
 Metrics/BlockLength:
   Max: 40
-Metrics/LineLength:
-  Max: 120
 Metrics/MethodLength:
   Max: 40
 Style/Copyright:

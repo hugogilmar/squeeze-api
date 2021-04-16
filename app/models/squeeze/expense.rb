@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require('sidekiq/api')
+require 'sidekiq/api'
 
 module Squeeze
   # Expenses model
@@ -31,9 +31,7 @@ module Squeeze
       job = Sidekiq::ScheduledSet.new.find_job(meta_job_id)
       job&.delete
 
-      # rubocop:disable Rails/SkipsModelValidations
       update_column(:meta, meta.except(:job_id))
-      # rubocop:enable Rails/SkipsModelValidations
     end
 
     # Store expense operation callback
@@ -44,9 +42,9 @@ module Squeeze
 
       if scheduled_for.present?
         job = StoreOperationJob.set(wait_until: scheduled_for).perform_later(self, operation_attrs)
-        # rubocop:disable Rails/SkipsModelValidations
+
         update_column(:meta, meta.merge(job_id: job.provider_job_id))
-        # rubocop:enable Rails/SkipsModelValidations
+
         job
       else
         StoreOperationJob.perform_later(self, operation_attrs)

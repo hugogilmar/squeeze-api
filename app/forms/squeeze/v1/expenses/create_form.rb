@@ -9,6 +9,7 @@ module Squeeze
         property :account_id
         property :description
         property :amount
+        property :scheduled_for
 
         validates :category_id, presence: true
         validates :account_id, presence: true

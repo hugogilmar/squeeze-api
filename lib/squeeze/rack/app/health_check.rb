@@ -13,11 +13,9 @@ module Squeeze
         protected
 
         def headers
-          # rubocop:disable Style/StringHashKeys
           {
-            'Content-Type' => 'application/json'
+            "Content-Type": 'application/json'
           }
-          # rubocop:enable Style/StringHashKeys
         end
 
         def body

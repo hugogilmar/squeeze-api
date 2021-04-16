@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require('test_helper')
+require 'test_helper'
 
 class DummySearchCommand < Squeeze::V1::Base::SearchCommand; end
 

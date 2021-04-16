@@ -1,0 +1,5 @@
+---
+:concurrency: <%= ENV['RAILS_MAX_THREADS'] %>
+:queues:
+  - squeeze_default
+  - squeeze_mailers

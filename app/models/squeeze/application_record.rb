@@ -7,11 +7,9 @@ module Squeeze
 
     self.abstract_class = true
 
-    class << self
-      # Set table prefix for inherited models
-      def table_name_prefix
-        'squeeze_'
-      end
+    # Set table prefix for inherited models
+    def self.table_name_prefix
+      'squeeze_'
     end
   end
 end

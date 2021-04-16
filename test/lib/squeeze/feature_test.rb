@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require('test_helper')
-require('squeeze/feature')
+require 'test_helper'
+require 'squeeze/feature' 
 
 module Squeeze
   class FeatureTest < Minitest::Test

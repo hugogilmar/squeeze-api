@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require('test_helper')
+require 'test_helper'
 
 class DummyNestedCreateCommand < Squeeze::V1::Base::Nested::CreateCommand; end
 

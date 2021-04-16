@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require('reform/form/validation/unique_validator')
+require 'reform/form/validation/unique_validator'
 
 module Squeeze
   module V1

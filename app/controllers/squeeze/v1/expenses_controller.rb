@@ -6,7 +6,7 @@ module Squeeze
     class ExpensesController < ApplicationController
       # Expenses allowed params
       def resource_permitted_params
-        %i[category_id account_id description amount]
+        %i[category_id account_id description amount scheduled_for]
       end
 
       # Expenses filter allowed params

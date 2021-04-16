@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_09_094346) do
+ActiveRecord::Schema.define(version: 2020_05_16_185110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 2019_12_09_094346) do
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "scheduled_for"
+    t.text "meta"
     t.index ["account_id"], name: "index_squeeze_expenses_on_account_id"
     t.index ["budget_id"], name: "index_squeeze_expenses_on_budget_id"
     t.index ["category_id"], name: "index_squeeze_expenses_on_category_id"

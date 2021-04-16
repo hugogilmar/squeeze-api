@@ -21,5 +21,7 @@ Metrics/MethodLength:
   Max: 40
 Style/Copyright:
   Enabled: false
+Style/MethodCallWithArgsParentheses:
+  Enabled: false
 Style/MissingElse:
   Enabled: false

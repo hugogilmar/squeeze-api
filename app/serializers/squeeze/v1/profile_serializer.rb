@@ -4,7 +4,7 @@ module Squeeze
   module V1
     # Profiles serializer
     class ProfileSerializer < ApplicationSerializer
-      attributes :uuid, :id, :first_name, :last_name, :created_at, :updated_at
+      attributes :id, :first_name, :last_name, :created_at, :updated_at
     end
   end
 end

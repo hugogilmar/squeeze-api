@@ -4,7 +4,7 @@ module Squeeze
   module V1
     # Accounts serializer
     class AccountSerializer < ApplicationSerializer
-      attributes :uuid, :id, :description, :kind, :reference_number, :created_at, :updated_at
+      attributes :id, :description, :kind, :reference_number, :created_at, :updated_at
     end
   end
 end
